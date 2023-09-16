@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Order } from './../../models/order';
 
 @Component({
   selector: 'app-orders',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent {
+   orders: Order[] ;
+   constructor(){
+    this.orders=[]
+   }
+
+
 
 }
