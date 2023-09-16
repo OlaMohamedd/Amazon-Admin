@@ -12,6 +12,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.compon
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    SublevelMenuComponent
+    SublevelMenuComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

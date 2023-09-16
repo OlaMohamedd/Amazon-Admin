@@ -7,6 +7,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -22,8 +23,9 @@ const routes: Routes = [
   },
   {path: 'pages', component: PagesComponent},
   {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent}
-];
+  {path: 'settings', component: SettingsComponent},
+  {path: 'orders', component:OrdersComponent }
+];SettingsComponent
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

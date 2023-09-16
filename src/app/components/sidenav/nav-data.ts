@@ -67,9 +67,9 @@ export const navbarData: INavbarData[] = [
         label: 'Pages'
     },
     {
-        routeLink: 'media',
-        icon: 'fal fa-camera',
-        label: 'Media'
+        routeLink: 'orders',
+        icon: 'fal fa-solid fa-cart-arrow-down',
+        label: 'Orders'
     },
     {
         routeLink: 'settings',
