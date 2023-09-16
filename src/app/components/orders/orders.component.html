@@ -6,26 +6,14 @@
     <th class="order-th">Status</th>
     <th class="order-th">Ship to</th>
     <th class="order-th">Total</th>
-    <tr class="order-tr-light">
-      <td class="order-td">1</td>
-      <td class="order-td">2</td>
+
+    <tr *ngFor="let item of orders ;index as i" class="order-tr-light">
+      <td class="order-td">{{item.user}}</td>
+      <td class="order-td">{{item.createdAt}}</td>
       <td class="order-td">3</td>
       <td class="order-td">4</td>
       <td class="order-td">5</td>
     </tr>
-    <tr class="order-tr-dark">
-      <td class="order-td">1</td>
-      <td class="order-td">2</td>
-      <td class="order-td">3</td>
-      <td class="order-td">4</td>
-      <td class="order-td">5</td>
-    </tr>
-    <tr class="order-tr-light">
-      <td class="order-td">1</td>
-      <td class="order-td">2</td>
-      <td class="order-td">3</td>
-      <td class="order-td">4</td>
-      <td class="order-td">5</td>
-    </tr>
+    
   </table>
 </div>

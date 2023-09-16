@@ -13,6 +13,8 @@ import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -26,12 +28,15 @@ import { HttpClientModule } from '@angular/common/http';
     MediaComponent,
     SettingsComponent,
     SublevelMenuComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
