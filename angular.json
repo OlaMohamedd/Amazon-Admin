@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "admin": {
+    "sidenav-with-multilevel-menu": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/admin",
+            "outputPath": "dist/sidenav-with-multilevel-menu",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,14 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
-
+              "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
-          ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -61,13 +56,7 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -76,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "admin:build:production"
+              "browserTarget": "sidenav-with-multilevel-menu:build:production"
             },
             "development": {
-              "browserTarget": "admin:build:development"
+              "browserTarget": "sidenav-with-multilevel-menu:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "sidenav-with-multilevel-menu:build"
           }
         },
         "test": {
@@ -113,6 +102,6 @@
     }
   },
   "cli": {
-    "analytics": "a13748f5-602b-4b81-8b70-e4b59eed6e8f"
+    "analytics": "112fd952-78c6-4843-a8cd-4716c40d91b9"
   }
 }
