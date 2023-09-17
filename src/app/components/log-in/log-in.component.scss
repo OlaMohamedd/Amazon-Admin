@@ -108,8 +108,8 @@ a{
 footer .links{
     display: flex;
     justify-content: space-between;
-    width: 250px;
-    margin: 25px auto 15px auto;
+    width: 15rem;
+    margin: 2rem auto .4rem auto;
 }
 footer .links a{
     font-size: 12px;
@@ -124,7 +124,7 @@ footer::before{
     justify-content: center;
     width: 80%;
     margin: auto;
-    height: 44px;
+    height: 3rem;
     margin-top: -35px;
     border-top: 1px solid transparent;
     box-shadow: 0 10px 15px -20px #333;
