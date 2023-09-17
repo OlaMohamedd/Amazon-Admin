@@ -23,10 +23,10 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signInForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    // this.signInForm = this.formBuilder.group({
+    //   email: ['', Validators.required],
+    //   password: ['', Validators.required]
+    // });
   }
 
   signIn() {

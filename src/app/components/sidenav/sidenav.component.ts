@@ -31,7 +31,7 @@ interface SideNavToggle {
 export class SidenavComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-    collapsed = false;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
@@ -57,14 +57,10 @@ export class SidenavComponent implements OnInit {
         next:(user) => {
           this.isAdminLogged=user;
           console.log(this.isAdminLogged);
-  
-  
         },
         error:(error) => {
           console.log(error);
-  
         }
-  
       });
   }
 
