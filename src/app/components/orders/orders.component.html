@@ -1,22 +1,30 @@
 <h1>orders</h1>
 <div class="shadow">
   <table class=" table ">
-    <th class="order-th shadow">order</th>
-    <th class="order-th shadow">date</th>
-    <th class="order-th shadow">items</th>
-    <th class="order-th shadow">Ship to</th>
-    <th class="order-th shadow">Status</th>
-    <th class="order-th shadow">Total</th>
-    <th class="order-th shadow">details</th>
+    <thead>
 
-    <tr *ngFor="let order of orders ;index as i" class="order-tr-light shadow">
-      <td class="order-td ">{{order.user.fristName}} {{order.user.lastName}}</td>
-      <td class="order-td">{{order.createdAt |date}}</td>
-      <td class="order-td">{{order.products.length}}</td>
-      <td class="order-td">{{order.user.address}}</td>
-      <td class="order-td">{{order.status}}</td>
-      <td class="order-td">{{totalprice(order.products)}}</td>
-      <td class="order-td text-center"><button (click)="details(order._id)"  class="btn btn-dark">show details</button></td>
-    </tr>
+      <th class="order-th shadow">order</th>
+      <th class="order-th shadow">date</th>
+      <th class="order-th shadow">items</th>
+      <th class="order-th shadow">Ship to</th>
+      <th class="order-th shadow">Status</th>
+      <th class="order-th shadow">Total</th>
+      <th class="order-th shadow text-center">Actions</th>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let order of orders ;index as i" class="order-tr-light shadow">
+        <td class="order-td ">{{order.user.fristName}} {{order.user.lastName}}</td>
+        <td class="order-td">{{order.createdAt |date}}</td>
+        <td class="order-td">{{order.products.length}}</td>
+        <td class="order-td">{{order.user.address}}</td>
+        <td class="order-td">{{order.status}}</td>
+        <td class="order-td">{{totalprice(order.products)}}</td>
+        <td class="order-td text-center">
+          <button (click)="details(order._id)" class="btn btn-dark">show details</button>
+          <button class="btn btn-danger mx-3" (click)="delete(order._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>

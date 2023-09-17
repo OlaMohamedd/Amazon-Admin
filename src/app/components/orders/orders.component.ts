@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderSevicesService } from './../../../services/orderSevices/order-sevices.service';
-
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -8,22 +9,26 @@ import { OrderSevicesService } from './../../../services/orderSevices/order-sevi
 })
 export class OrdersComponent implements OnInit {
    orders: any =[] ;
-   constructor(    private orderSevicesService: OrderSevicesService    ){
+   constructor(private route:Router,    private orderSevicesService: OrderSevicesService    ){
     
     
    }
   ngOnInit(): void {
+    this.getAllOrders();
+  }
+  getAllOrders(){
+    
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
         // console.log(data);
-
+  
         this.orders=[...Object.values(data)][0];
         
       }
     );
   }
   details(id:string){
-    alert(id)   //////////////////////make details component
+    this.route.navigateByUrl('/order-details/' + id);
   }
   totalprice(t:any[]){
     let sum =0
@@ -32,6 +37,28 @@ export class OrdersComponent implements OnInit {
       
   }
   return sum
+}
+
+delete(id: string) {
+  Swal.fire({
+    title: 'Delete order!',
+    text: 'Do you want to delete order',
+    icon: 'question',
+    confirmButtonText: 'Delete Order',
+    cancelButtonText: 'Cancel',
+    showCancelButton: true
+  }).then((res) =>{
+    if(res.isConfirmed){
+      this.orderSevicesService.deleteById(id).subscribe(res=>{
+        console.log(res);
+        Swal.fire({title:'Order deleted!',text:"Order deleted", icon:'success'});
+        this.getAllOrders();
+      })
+    }
+  })
+  // Swal.fire("Good job!", `id: ${id}`, "success")
+  // swal("Good job!", `id: ${id}`, "success");
+
 }
    
 

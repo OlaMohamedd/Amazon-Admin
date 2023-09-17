@@ -9,6 +9,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'media', component: MediaComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'orders', component:OrdersComponent },
+  {path: 'order-details/:id', component: OrderDetailsComponent},
     {path: 'login', component: LogInComponent}
 
 ];SettingsComponent

@@ -15,8 +15,12 @@ export class OrderSevicesService {
      return this.httpClient.get<Order[]>('http://localhost:3300/order');
     //  return this.httpClient.get<Iproduct[]>(`${environment.BaseApiURL}/products`);
     }
-  getPrdByID(orderID:number):Observable<Order>{
+  getPrdByID(orderID:string):Observable<{data:Order}>{
     // return this.httpClient.get<Iproduct>('http://localhost:3000/products'+'/'+prdID);
-    return this.httpClient.get<Order>(`http://localhost:3300/order/${orderID}`);
+    return this.httpClient.get<{data:Order}>(`http://localhost:3300/order/${orderID}`);
+  }
+
+  deleteById(id:string):Observable<{data: boolean}>{
+    return this.httpClient.delete<{data:boolean}>(`http://localhost:3300/order/${id}`);
   }
 }
