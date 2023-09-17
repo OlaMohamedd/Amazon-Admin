@@ -87,10 +87,14 @@ export const navbarData: INavbarData[] = [
             }
         ]
     },
-    {
-        routeLink: 'login',
-        icon: 'fal fa-solid fa-lock-open',
-       
-        label: 'login'
-    }
+    // {
+    //     routeLink: 'login',
+    //     icon: 'fal fa-solid fa-lock-open',
+    //     label: 'login'
+    // },
+    // {
+    //     routeLink: 'login',
+    //     icon: "fal fa-solid fa-lock",
+    //     label: 'logout'
+    // }
 ];

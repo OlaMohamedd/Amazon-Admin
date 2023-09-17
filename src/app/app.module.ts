@@ -12,10 +12,12 @@ import { PagesComponent } from './components/pages/pages.component';
 import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { OrdersComponent } from './components/orders/orders.component';
-import { LogInComponent } from './log-in/log-in.component';
+
+
 
 
 @NgModule({
@@ -31,13 +33,14 @@ import { LogInComponent } from './log-in/log-in.component';
     SublevelMenuComponent,
     OrdersComponent,
     LogInComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
