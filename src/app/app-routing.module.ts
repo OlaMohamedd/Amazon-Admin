@@ -18,15 +18,15 @@ const routes: Routes = [
     loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule)
     ,canActivate: [adminGuardGuard]
   },
-  {path: 'statistics', component: StatisticsComponent},
+  {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard]},
   {
     path: 'coupens',
     loadChildren: () => import('./components/coupens/coupens.module').then(m => m.CoupensModule)
     ,canActivate: [adminGuardGuard]
   },
-  {path: 'pages', component: PagesComponent},
-  {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: 'pages', component: PagesComponent ,canActivate: [adminGuardGuard]},
+  {path: 'media', component: MediaComponent ,canActivate: [adminGuardGuard]},
+  {path: 'settings', component: SettingsComponent ,canActivate: [adminGuardGuard]},
   {path: 'login', component: LogInComponent}
 ];
 // const admin:Routes=[ ]
