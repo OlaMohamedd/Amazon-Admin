@@ -15,6 +15,7 @@ import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     MediaComponent,
     SettingsComponent,
     SublevelMenuComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

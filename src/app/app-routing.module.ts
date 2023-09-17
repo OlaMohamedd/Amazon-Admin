@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -24,7 +25,9 @@ const routes: Routes = [
   {path: 'pages', component: PagesComponent},
   {path: 'media', component: MediaComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'orders', component:OrdersComponent }
+  {path: 'orders', component:OrdersComponent},
+  {path: 'orders/orderdetails/:id', component: OrderDetailsComponent},
+
 ];SettingsComponent
 
 @NgModule({

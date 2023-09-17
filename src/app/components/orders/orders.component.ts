@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderSevicesService } from './../../../services/orderSevices/order-sevices.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -8,10 +9,7 @@ import { OrderSevicesService } from './../../../services/orderSevices/order-sevi
 })
 export class OrdersComponent implements OnInit {
    orders: any =[] ;
-   constructor(    private orderSevicesService: OrderSevicesService    ){
-    
-    
-   }
+   constructor(    private orderSevicesService: OrderSevicesService,    private router: Router,    ){}
   ngOnInit(): void {
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
@@ -23,7 +21,9 @@ export class OrdersComponent implements OnInit {
     );
   }
   details(id:string){
-    alert(id)   //////////////////////make details component
+      //////////////////////make details component
+      this.router.navigate(['/orders/orderdetails',id]);
+
   }
   totalprice(t:any[]){
     let sum =0
