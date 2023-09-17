@@ -3,16 +3,20 @@
   <table class="table-striped">
     <th class="order-th">order</th>
     <th class="order-th">date</th>
-    <th class="order-th">Status</th>
+    <th class="order-th">items</th>
     <th class="order-th">Ship to</th>
+    <th class="order-th">Status</th>
     <th class="order-th">Total</th>
+    <th class="order-th">details</th>
 
-    <tr *ngFor="let item of orders ;index as i" class="order-tr-light">
-      <td class="order-td">{{item.user.fristName}} {{item.user.lastName}}</td>
-      <td class="order-td">{{item.createdAt |date}}</td>
-      <td class="order-td">3</td>
-      <td class="order-td">{{item.user.address}}</td>
-      <td class="order-td">5</td>
+    <tr *ngFor="let order of orders ;index as i" class="order-tr-light">
+      <td class="order-td">{{order.user.fristName}} {{order.user.lastName}}</td>
+      <td class="order-td">{{order.createdAt |date}}</td>
+      <td class="order-td">{{order.products.length}}</td>
+      <td class="order-td">{{order.user.address}}</td>
+      <td class="order-td">?</td>
+      <td class="order-td">?</td>
+      <td class="order-td"><button class="btn btn-primary">show details</button></td>
     </tr>
     
   </table>
