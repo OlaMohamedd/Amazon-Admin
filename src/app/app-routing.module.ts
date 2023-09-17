@@ -29,7 +29,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  // import { DashboardComponent } from './components/dashboard/dashboard.component';
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

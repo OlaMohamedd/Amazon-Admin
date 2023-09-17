@@ -7,7 +7,7 @@ import { LoginAdmin } from '../Models/login-admin';
   providedIn: 'root'
 })
 export class LoginAuthService {
-  apiURL = 'http://localhost:3300/admins';
+  apiURL = 'http://localhost:3300/admin/login';
   isLogBehavior: BehaviorSubject<boolean>;
   currentAdmin: LoginAdmin | null = null; // Initialize currentUser to null
 
@@ -15,14 +15,14 @@ export class LoginAuthService {
     this.isLogBehavior = new BehaviorSubject<boolean>(this.isAdminLoggedIn());
   }
 
+  
   login(email: string, password: string): Observable<boolean> {
-    return this.http.get<LoginAdmin[]>(this.apiURL).pipe(
-      map(admins => {
-        const admin = admins.find(u => u.email === email && u.password === password);
-        if (admin) {
-          let adminToken = "my-token";
-          localStorage.setItem("token", adminToken);
-          this.currentAdmin = admin; // Store the logged-in user
+    return this.http.post<any>(this.apiURL, { email, password }).pipe(
+      map(response => {
+        const { token } = response;
+        if (token) {
+          localStorage.setItem('token', token);
+          this.currentAdmin = response.admin; 
           this.isLogBehavior.next(true);
           return true;
         } else {
@@ -32,6 +32,7 @@ export class LoginAuthService {
       })
     );
   }
+
 
   logout() {
     localStorage.removeItem("token");
