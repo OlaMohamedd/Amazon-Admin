@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoupensComponent } from './coupens/coupens.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MediaComponent } from './media/media.component';
-import { PagesComponent } from './pages/pages.component';
-import { ProductsComponent } from './products/products.component';
-import { SettingsComponent } from './settings/settings.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { LogInComponent } from './log-in/log-in.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { PagesComponent } from './components/pages/pages.component';
+import { MediaComponent } from './components/media/media.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { CoupensComponent } from './components/coupens/coupens.component';
+import { ProductsComponent } from './components/products/products.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -30,6 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  // import { DashboardComponent } from './components/dashboard/dashboard.component';
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
