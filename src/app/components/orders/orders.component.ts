@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from './../../models/order';
 import { OrderSevicesService } from './../../../services/orderSevices/order-sevices.service';
 
 @Component({
@@ -19,11 +18,21 @@ export class OrdersComponent implements OnInit {
         // console.log(data);
 
         this.orders=[...Object.values(data)][0];
-        console.log(this.orders);
         
       }
     );
   }
+  details(id:string){
+    alert(id)   //////////////////////make details component
+  }
+  totalprice(t:any[]){
+    let sum =0
+    for (let i of t ){
+      sum+=i.price.new;
+      
+  }
+  return sum
+}
    
 
 
