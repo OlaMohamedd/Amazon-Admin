@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'pages', component: PagesComponent},
   {path: 'media', component: MediaComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'orders', component:OrdersComponent },
+  {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] },
     {path: 'login', component: LogInComponent}
 
 ];SettingsComponent
