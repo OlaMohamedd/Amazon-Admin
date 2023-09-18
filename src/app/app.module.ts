@@ -15,6 +15,7 @@ import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.compon
 import { LogInComponent } from './components/log-in/log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -30,12 +31,17 @@ import { HttpClientModule } from '@angular/common/http';
     MediaComponent,
     SettingsComponent,
     SublevelMenuComponent,
+    OrdersComponent,
     LogInComponent
     ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,FormsModule, HttpClientModule,ReactiveFormsModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

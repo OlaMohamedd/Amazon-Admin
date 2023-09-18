@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoupensComponent } from './components/coupens/coupens.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { CoupensComponent } from './components/coupens/coupens.component';
 import { ProductsComponent } from './components/products/products.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { adminGuardGuard } from './Guards/admin-guard.guard';
 
@@ -24,12 +25,13 @@ const routes: Routes = [
     loadChildren: () => import('./components/coupens/coupens.module').then(m => m.CoupensModule)
     ,canActivate: [adminGuardGuard]
   },
-  {path: 'pages', component: PagesComponent ,canActivate: [adminGuardGuard]},
-  {path: 'media', component: MediaComponent ,canActivate: [adminGuardGuard]},
-  {path: 'settings', component: SettingsComponent ,canActivate: [adminGuardGuard]},
-  {path: 'login', component: LogInComponent}
-];
-// const admin:Routes=[ ]
+  {path: 'pages', component: PagesComponent},
+  {path: 'media', component: MediaComponent},
+  {path: 'settings', component: SettingsComponent},
+  {path: 'orders', component:OrdersComponent },
+    {path: 'login', component: LogInComponent}
+
+];SettingsComponent
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
