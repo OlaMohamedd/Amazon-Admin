@@ -16,7 +16,7 @@
       <tr *ngFor="let order of orders ;index as i" class="order-tr-light shadow">
         <td class="order-td ">{{order.user.fristName}} {{order.user.lastName}}</td>
         <td class="order-td">{{order.createdAt |date}}</td>
-        <td class="order-td">{{order.products.length}}</td>
+        <td class="order-td">{{items(order.products)}}</td>
         <td class="order-td">{{order.user.address}}</td>
         <td class="order-td">{{order.status}}</td>
         <td class="order-td">{{totalprice(order.products)}}</td>

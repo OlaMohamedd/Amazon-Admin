@@ -33,10 +33,18 @@ export class OrdersComponent implements OnInit {
   totalprice(t:any[]){
     let sum =0
     for (let i of t ){
-      sum+=i.price.new;
+      sum+=i.product.price.new*i.quantity;
       
   }
   return sum
+}
+items(t:any[]){
+  let items=0
+  for (const i of t) {
+    console.log(items += i.quantity);
+    
+  }
+  return items
 }
 
 delete(id: string) {
