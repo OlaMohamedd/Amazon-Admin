@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoupensComponent } from './components/coupens/coupens.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -11,6 +10,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { adminGuardGuard } from './Guards/admin-guard.guard';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},

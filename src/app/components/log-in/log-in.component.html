@@ -8,17 +8,17 @@
         <!-- <input type="text" formControlName="email"> -->
 
 
-        <div class="form-group" [ngClass]="{'has-error': signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)}">
+        <div class="form-group">
             <label for="email" class="form-label"><h5>Email or mobile phone number</h5></label>
             <input type="text" class="form-control" id="email" formControlName="email">
             <div *ngIf="signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)">
-              <div *ngIf="signInForm.get('email')?.errors?.['required']" class="alarm">Enter your email or mobile phone number</div>
+            <div *ngIf="signInForm.get('email')?.errors?.['required']" class="alarm">Enter your email or mobile phone number</div>
               <!-- <div *ngIf="signInForm.get('email')?.errors?.['email']" class="alarm">Invalid email format</div> -->
             </div>
           </div>
          
           
-        <div class="form-group" [ngClass]="{'has-error': signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)}">
+        <div class="form-group">
             <label for="password" class="form-label"><h5>Password</h5></label>
             <input type="password" class="form-control" id="password" formControlName="password">
             <div *ngIf="signInForm.get('password')?.invalid && (signInForm.get('password')?.dirty || signInForm.get('password')?.touched)">
