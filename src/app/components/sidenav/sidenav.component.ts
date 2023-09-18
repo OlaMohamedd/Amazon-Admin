@@ -57,14 +57,10 @@ export class SidenavComponent implements OnInit {
         next:(user) => {
           this.isAdminLogged=user;
           console.log(this.isAdminLogged);
-  
-  
         },
         error:(error) => {
           console.log(error);
-  
         }
-  
       });
   }
 
