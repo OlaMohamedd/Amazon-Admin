@@ -16,8 +16,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
-
-
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 @NgModule({
@@ -32,8 +31,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     SettingsComponent,
     SublevelMenuComponent,
     OrdersComponent,
-    LogInComponent
-    ],
+    LogInComponent,
+    OrderDetailsComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
