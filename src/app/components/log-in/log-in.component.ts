@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component} from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginAuthService } from 'src/app/Services/login-auth.service';
 
@@ -8,7 +8,7 @@ import { LoginAuthService } from 'src/app/Services/login-auth.service';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent {
   signInForm: FormGroup;
 
   constructor(
@@ -18,13 +18,6 @@ export class LogInComponent implements OnInit {
   ) {
     this.signInForm = this.formBuilder.group({
       email: ['', Validators.required , Validators.email],
-      password: ['', Validators.required]
-    });
-  }
-
-  ngOnInit() {
-    this.signInForm = this.formBuilder.group({
-      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }

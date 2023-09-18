@@ -139,3 +139,6 @@ footer p{
     font-size: small;
     color: red;
 }
+.has-error .form-control {
+    border-color: red;
+  }
