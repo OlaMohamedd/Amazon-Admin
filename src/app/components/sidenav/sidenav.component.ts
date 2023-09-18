@@ -3,6 +3,7 @@ import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
+import { LoginAuthService } from 'src/app/Services/login-auth.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -30,7 +31,7 @@ interface SideNavToggle {
 export class SidenavComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-    collapsed = false;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
@@ -43,11 +44,24 @@ export class SidenavComponent implements OnInit {
       this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
     }
   }
+  adminLog:boolean=false;
+  isAdminLogged:boolean;
+  constructor( private loginAuthService: LoginAuthService ,private router: Router){
+  this.isAdminLogged=this.loginAuthService.isAdminLoggedIn();
 
-  constructor(public router: Router) {}
+  }
 
   ngOnInit(): void {
       this.screenWidth = window.innerWidth;
+      this.loginAuthService.getUserStatus().subscribe({
+        next:(user) => {
+          this.isAdminLogged=user;
+          console.log(this.isAdminLogged);
+        },
+        error:(error) => {
+          console.log(error);
+        }
+      });
   }
 
   toggleCollapse(): void {
@@ -75,7 +89,13 @@ export class SidenavComponent implements OnInit {
         if (item !== modelItem && modelItem.expanded) {
           modelItem.expanded = false;
         }
+
       }
     }
+  }
+  logout(){
+    this.loginAuthService.logout();
+    this.adminLog=this.loginAuthService.isAdminLoggedIn();
+    this.router.navigate(['/login']);
   }
 }
