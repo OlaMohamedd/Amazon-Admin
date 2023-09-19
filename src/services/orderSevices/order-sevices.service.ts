@@ -1,3 +1,4 @@
+// import { Order } from 'src/app/models/order';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from './../../app/models/order';
@@ -17,10 +18,14 @@ export class OrderSevicesService {
     }
   getPrdByID(orderID:string):Observable<{data:Order}>{
     // return this.httpClient.get<Iproduct>('http://localhost:3000/products'+'/'+prdID);
-    return this.httpClient.get<{data:Order}>(`http://localhost:3300/order/${orderID}`);
+    return this.httpClient.get<{data:Order}>(`http://localhost:3300/order/${orderID}`,{headers:{localization:'en'}});
   }
 
   deleteById(id:string):Observable<{data: boolean}>{
     return this.httpClient.delete<{data:boolean}>(`http://localhost:3300/order/${id}`);
+  }
+  updateById(orderId:string):Observable<{data:Order}>{
+  return this.httpClient.patch<{data:Order}>(`http://localhost:3300/order/${orderId}/changetocomplete`,{});
+
   }
 }

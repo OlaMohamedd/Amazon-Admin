@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
     
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
-        // console.log(data);
+      console.log(data);
   
         this.orders=[...Object.values(data)][0];
         
@@ -41,8 +41,7 @@ export class OrdersComponent implements OnInit {
 items(t:any[]){
   let items=0
   for (const i of t) {
-    console.log(items += i.quantity);
-    
+    items+=i.quantity
   }
   return items
 }
@@ -66,6 +65,15 @@ delete(id: string) {
   })
   // Swal.fire("Good job!", `id: ${id}`, "success")
   // swal("Good job!", `id: ${id}`, "success");
+
+}
+updateById(id:string){
+  console.log(id);
+  this.orderSevicesService.updateById(id).subscribe(res=>{
+    console.log(res);
+    Swal.fire({title:'Update statue!',text:"Order Completed", icon:'success'});
+    this.getAllOrders();
+  })
 
 }
    

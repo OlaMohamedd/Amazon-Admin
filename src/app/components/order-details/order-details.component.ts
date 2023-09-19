@@ -15,11 +15,12 @@ export class OrderDetailsComponent implements OnInit{
 
   ngOnInit(): void {
     this.orderService.getPrdByID(this.activatedRoute.snapshot.params['id']).subscribe((res:{data:Order})=>{
-      console.log(res);
+      console.log("resullt from d",res);
       this.details = res.data;
       this.details.products.forEach(product=>{
-        this.totalPrice += product?.price?.new;
+        this.totalPrice += product?.product?.price?.new*product.quantity;
       });
     })
   }
+  
 }
