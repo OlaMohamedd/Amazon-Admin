@@ -17,6 +17,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SublevelMenuComponent,
     OrdersComponent,
     LogInComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    SalesByMonthComponent
   ],
   imports: [
     BrowserModule,
