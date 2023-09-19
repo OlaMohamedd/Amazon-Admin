@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderSevicesService } from './../../../services/orderSevices/order-sevices.service';
+import { OrderSevicesService } from '../../Services/orderSevices/order-sevices.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 @Component({
@@ -20,10 +20,10 @@ export class OrdersComponent implements OnInit {
     
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
-      console.log(data);
   
         this.orders=[...Object.values(data)][0];
-        
+              console.log(this.orders);
+
       }
     );
   }

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
+import { ProductsComponent } from './components/products/products.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NgModule } from '@angular/core';
     SublevelMenuComponent,
     OrdersComponent,
     LogInComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

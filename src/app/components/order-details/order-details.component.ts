@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/models/order';
-import { OrderSevicesService } from 'src/services/orderSevices/order-sevices.service';
+import { OrderSevicesService } from 'src/app/Services/orderSevices/order-sevices.service';
 
 @Component({
   selector: 'app-order-details',
@@ -11,6 +11,7 @@ import { OrderSevicesService } from 'src/services/orderSevices/order-sevices.ser
 export class OrderDetailsComponent implements OnInit{
   public details: Order | null = null;
   public totalPrice: number = 0;
+  totalitems:number=0
   constructor(private activatedRoute: ActivatedRoute, private orderService: OrderSevicesService){}
 
   ngOnInit(): void {
@@ -21,6 +22,10 @@ export class OrderDetailsComponent implements OnInit{
         this.totalPrice += product?.product?.price?.new*product.quantity;
       });
     })
+  }
+  items(t:any){
+
+    this.totalitems+=t
   }
   
 }

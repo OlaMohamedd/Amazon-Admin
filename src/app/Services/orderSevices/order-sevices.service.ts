@@ -1,8 +1,7 @@
-// import { Order } from 'src/app/models/order';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Order } from './../../app/models/order';
 import { HttpClient } from '@angular/common/http';
+import { Order } from 'src/app/models/order';
 
 @Injectable({
   providedIn: 'root'

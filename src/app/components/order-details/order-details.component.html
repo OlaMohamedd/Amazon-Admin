@@ -53,7 +53,7 @@
                         <span [title]="item?.product?.title_en" [ngClass]="{'long-text text-truncate': item?.product?.title_en?.length > 30}">{{item?.product?.title_en| slice:0 : 30}}</span>
                     </td>
                     <td>
-                        <span>{{item?.quantity}}</span>
+                        <span>{{item?.quantity }} {{items(item?.quantity)}}</span>
                     </td>
                     <td>
                         <span>{{item?.product?.price?.new *item.quantity| currency}}</span>
@@ -67,9 +67,14 @@
               <tfoot>
                 <tr>
                     <td></td>
-                    <th colspan="4" class="">
+                    <th colspan="3" class="">
                         <span>
                             Total
+                        </span>
+                    </th>
+                    <th colspan="1" class="">
+                        <span>
+                            {{totalitems}}
                         </span>
                     </th>
                     <td colspan="2" class="fw-bold">
