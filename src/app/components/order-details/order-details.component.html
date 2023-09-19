@@ -56,7 +56,7 @@
                         <span>{{item?.quantity}}</span>
                     </td>
                     <td>
-                        <span>{{item?.product?.price?.new | currency}}</span>
+                        <span>{{item?.product?.price?.new*item?.quantity | currency}}</span>
                     </td>
                     <td>
                         <span>{{item?.product?.price?.discount | number}}%</span>
