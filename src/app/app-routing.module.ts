@@ -13,25 +13,25 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'  , title:"Dashboard"},
+  {path: 'dashboard', component: DashboardComponent ,canActivate: [adminGuardGuard] , title:"Dashboard"},
   {
     path: 'products',
     loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule)
-    ,canActivate: [adminGuardGuard]
+    ,canActivate: [adminGuardGuard ], title:"Products"
   },
-  {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard]},
+  {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard] , title:"Statistics"},
   {
     path: 'coupens',
     loadChildren: () => import('./components/coupens/coupens.module').then(m => m.CoupensModule)
-    ,canActivate: [adminGuardGuard]
+    ,canActivate: [adminGuardGuard ] , title:"Coupens"
   },
-  {path: 'pages', component: PagesComponent},
-  {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] },
-  {path: 'order-details/:id', component: OrderDetailsComponent},
-    {path: 'login', component: LogInComponent}
+  {path: 'pages', component: PagesComponent ,canActivate: [adminGuardGuard] , title:"Pages"},
+  {path: 'media', component: MediaComponent ,canActivate: [adminGuardGuard] , title:"Media"},
+  {path: 'settings', component: SettingsComponent ,canActivate: [adminGuardGuard] , title:"Settings"},
+  {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] , title:"Orders"},
+  {path: 'order-details/:id', component: OrderDetailsComponent ,canActivate: [adminGuardGuard] , title:"Order Details"},
+  {path: 'login', component: LogInComponent , title:"Login"}
 
 ];SettingsComponent
 
