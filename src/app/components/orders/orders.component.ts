@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderSevicesService } from './../../../services/orderSevices/order-sevices.service';
+import { OrderSevicesService } from '../../Services/orderSevices/order-sevices.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 @Component({

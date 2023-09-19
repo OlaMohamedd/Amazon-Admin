@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
-import { LoginAuthService } from 'src/app/Services/login-auth.service';
+import { LoginAuthService } from 'src/app/Services/login/login-auth.service';
 
 interface SideNavToggle {
   screenWidth: number;

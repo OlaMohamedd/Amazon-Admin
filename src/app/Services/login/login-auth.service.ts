@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LoginAdmin } from '../Models/login-admin';
+import { LoginAdmin } from 'src/app/Models/login-admin';
 
 @Injectable({
   providedIn: 'root'

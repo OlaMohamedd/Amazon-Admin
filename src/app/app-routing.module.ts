@@ -16,9 +16,8 @@ const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {
-    path: 'products',
-    loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule)
-    ,canActivate: [adminGuardGuard]
+    path: 'products',component:ProductsComponent
+    // canActivate: [adminGuardGuard]
   },
   {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard]},
   {
