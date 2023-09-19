@@ -18,8 +18,9 @@ export class OrderDetailsComponent implements OnInit{
       console.log("resullt from d",res);
       this.details = res.data;
       this.details.products.forEach(product=>{
-        this.totalPrice += product?.product?.price?.new;
+        this.totalPrice += product?.product?.price?.new*product.quantity;
       });
     })
   }
+  
 }

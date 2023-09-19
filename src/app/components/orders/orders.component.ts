@@ -40,7 +40,9 @@ export class OrdersComponent implements OnInit {
 }
 items(t:any[]){
   let items=0
-
+  for (const i of t) {
+    items+=i.quantity
+  }
   return items
 }
 
