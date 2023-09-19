@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
@@ -16,8 +14,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
-
-
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { NgModule } from '@angular/core';
 
 
 @NgModule({
@@ -32,8 +30,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     SettingsComponent,
     SublevelMenuComponent,
     OrdersComponent,
-    LogInComponent
-    ],
+    LogInComponent,
+    OrderDetailsComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

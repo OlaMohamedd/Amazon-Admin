@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginAuthService } from 'src/app/Services/login-auth.service';
@@ -17,7 +17,8 @@ export class LogInComponent {
     private router:Router
   ) {
     this.signInForm = this.formBuilder.group({
-      email: ['',[ Validators.required , Validators.email]],
+
+      email: ['', [Validators.required , Validators.email]],
       password: ['', Validators.required]
     });
   }
