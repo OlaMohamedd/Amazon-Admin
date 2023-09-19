@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
     
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
-        // console.log(data);
+      console.log(data);
   
         this.orders=[...Object.values(data)][0];
         
@@ -33,6 +33,7 @@ export class OrdersComponent implements OnInit {
   totalprice(t:any[]){
     let sum =0
     for (let i of t ){
+      console.log(i)
       sum+=i.product.price.new*i.quantity;
       
   }

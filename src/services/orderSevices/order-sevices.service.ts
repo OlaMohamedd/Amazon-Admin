@@ -17,7 +17,7 @@ export class OrderSevicesService {
     }
   getPrdByID(orderID:string):Observable<{data:Order}>{
     // return this.httpClient.get<Iproduct>('http://localhost:3000/products'+'/'+prdID);
-    return this.httpClient.get<{data:Order}>(`http://localhost:3300/order/${orderID}`);
+    return this.httpClient.get<{data:Order}>(`http://localhost:3300/order/${orderID}`,{headers:{localization:'en'}});
   }
 
   deleteById(id:string):Observable<{data: boolean}>{
