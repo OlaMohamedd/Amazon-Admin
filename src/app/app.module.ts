@@ -17,6 +17,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
 import { ProductsComponent } from './components/products/products.component';
+import { LastFewTransactionsComponent } from './components/dashboard/last-few-transactions/last-few-transactions.component';
+import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
+import { SalesByCategoryComponent } from './components/dashboard/sales-by-category/sales-by-category.component';
+import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import { ProductsComponent } from './components/products/products.component';
     OrdersComponent,
     LogInComponent,
     OrderDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    SalesByMonthComponent,
+    LastFewTransactionsComponent,
+    SalesByCategoryComponent,
+    TopThreeProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,9 @@ import { ProductsComponent } from './components/products/products.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // FontAwesomeModule,
+    // NgChartsModule
 
   ],
   providers: [],
