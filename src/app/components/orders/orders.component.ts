@@ -20,10 +20,10 @@ export class OrdersComponent implements OnInit {
     
     this.orderSevicesService.getAllProducts().subscribe(
       data =>{
-      console.log(data);
   
         this.orders=[...Object.values(data)][0];
-        
+              console.log(this.orders);
+
       }
     );
   }
