@@ -18,7 +18,10 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import { LastFewTransactionsComponent } from './components/dashboard/last-few-transactions/last-few-transactions.component';
+import { SalesByCategoryComponent } from './components/dashboard/sales-by-category/sales-by-category.component';
+import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sal
     OrdersComponent,
     LogInComponent,
     OrderDetailsComponent,
-    SalesByMonthComponent
+    SalesByMonthComponent,
+    LastFewTransactionsComponent,
+    SalesByCategoryComponent,
+    TopThreeProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,8 @@ import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sal
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgChartsModule
 
   ],
   providers: [],

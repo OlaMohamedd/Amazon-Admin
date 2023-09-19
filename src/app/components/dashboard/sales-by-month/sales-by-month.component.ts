@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+// import { DataLabelsPlugin } from 'chartjs-plugin-datalabels';
+
 
 @Component({
   selector: 'app-sales-by-month',
@@ -6,65 +10,71 @@ import { Component } from '@angular/core';
   styleUrls: ['./sales-by-month.component.scss']
 })
 export class SalesByMonthComponent {
-  chart = new Chart({
-    chart: {
-      type: 'line',
-      height: 325
-    },
-    title: {
-      text: 'Month wise sales'
-    },
-    xAxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ]
-    },
-    yAxis: {
-      title: {
-        text: 'Revenue in $'
-      }
-    },
-    series: [
-      {
-        name: "Arizona",
-        type: "line",
-        color: '#044342',
-        data: [70, 69, 95, 145, 182, 215, 252, 265, 233, 183, 139, 196]
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  public barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 10,
       },
-      {
-        name: 'Connecticut',
-        type: 'line',
-        color: '#7e0505',
-        data: [
-          47, 52, 44, 35, 58, 69, 32, 53, 71, 82, 99, 159
-        ]
+    },
+    plugins: {
+      legend: {
+        display: true,
       },
-      {
-        name: 'Ohio',
-        type: 'line',
-        color: '#ed9e20',
-        data: [
-          17, 22, 14, 25, 18, 19, 22, 43, 11, 32, 29, 59
-        ]
-      },
+      // DataLabelsPlugin: {
+      //   anchor: 'end',
+      //   align: 'end',
+      // },
+    },
+  };
+  public barChartType: ChartType = 'bar';
+  // public barChartPlugins = [DataLabelsPlugin];
+
+  public barChartData: ChartData<'bar'> = {
+    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    datasets: [
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
     ],
-    credits: {
-      enabled: false
-    }
-  })
+  };
 
+  // events
+  public chartClicked({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: object[];
+  }): void {
+    console.log(event, active);
+  }
 
+  public chartHovered({
+    event,
+    active,
+  }: {
+    event?: ChartEvent;
+    active?: object[];
+  }): void {
+    console.log(event, active);
+  }
+
+  public randomize(): void {
+    // Only Change 3 values
+    this.barChartData.datasets[0].data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      Math.round(Math.random() * 100),
+      56,
+      Math.round(Math.random() * 100),
+      40,
+    ];
+
+    this.chart?.update();
+  }
 }
-
-
