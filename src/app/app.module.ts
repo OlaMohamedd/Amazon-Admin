@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
 
   ],
   providers: [],
