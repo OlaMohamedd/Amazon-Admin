@@ -23,6 +23,7 @@ import { SalesByCategoryComponent } from './components/dashboard/sales-by-catego
 import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
+import { ProductsComponent } from './components/products/products.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { NgChartsModule } from 'ng2-charts';
     LastFewTransactionsComponent,
     SalesByCategoryComponent,
     TopThreeProductsComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
