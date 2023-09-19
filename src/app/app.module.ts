@@ -1,5 +1,4 @@
-import { NgChartsModule } from 'ng2-charts';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +21,8 @@ import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sal
 import { LastFewTransactionsComponent } from './components/dashboard/last-few-transactions/last-few-transactions.component';
 import { SalesByCategoryComponent } from './components/dashboard/sales-by-category/sales-by-category.component';
 import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
