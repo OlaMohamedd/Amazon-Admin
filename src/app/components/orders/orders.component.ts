@@ -33,7 +33,6 @@ export class OrdersComponent implements OnInit {
   totalprice(t:any[]){
     let sum =0
     for (let i of t ){
-      console.log(i)
       sum+=i.product.price.new*i.quantity;
       
   }
@@ -41,10 +40,7 @@ export class OrdersComponent implements OnInit {
 }
 items(t:any[]){
   let items=0
-  for (const i of t) {
-    console.log(items += i.quantity);
-    
-  }
+
   return items
 }
 
@@ -67,6 +63,15 @@ delete(id: string) {
   })
   // Swal.fire("Good job!", `id: ${id}`, "success")
   // swal("Good job!", `id: ${id}`, "success");
+
+}
+updateById(id:string){
+  console.log(id);
+  this.orderSevicesService.updateById(id).subscribe(res=>{
+    console.log(res);
+    Swal.fire({title:'Update statue!',text:"Order Completed", icon:'success'});
+    this.getAllOrders();
+  })
 
 }
    
