@@ -18,6 +18,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { NgModule } from '@angular/core';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
   providers: [],
