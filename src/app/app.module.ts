@@ -16,8 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
 
 
 @NgModule({
@@ -33,8 +31,7 @@ import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sal
     SublevelMenuComponent,
     OrdersComponent,
     LogInComponent,
-    OrderDetailsComponent,
-    SalesByMonthComponent
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +39,7 @@ import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sal
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    FontAwesomeModule
+    ReactiveFormsModule
 
   ],
   providers: [],

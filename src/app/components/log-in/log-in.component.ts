@@ -17,7 +17,6 @@ export class LogInComponent {
     private router:Router
   ) {
     this.signInForm = this.formBuilder.group({
-
       email: ['', [Validators.required , Validators.email]],
       password: ['', Validators.required]
     });
