@@ -16,8 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
+import { NgChartsModule } from 'ng2-charts';
+import { LastFewTransactionsComponent } from './components/dashboard/last-few-transactions/last-few-transactions.component';
+import { SalesByCategoryComponent } from './components/dashboard/sales-by-category/sales-by-category.component';
+import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
 import { ProductsComponent } from './components/products/products.component';
-
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { ProductsComponent } from './components/products/products.component';
     OrdersComponent,
     LogInComponent,
     OrderDetailsComponent,
+    SalesByMonthComponent,
+    LastFewTransactionsComponent,
+    SalesByCategoryComponent,
+    TopThreeProductsComponent,
     ProductsComponent
   ],
   imports: [
@@ -41,7 +50,9 @@ import { ProductsComponent } from './components/products/products.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    NgChartsModule
 
   ],
   providers: [],
