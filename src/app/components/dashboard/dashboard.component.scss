@@ -28,7 +28,7 @@
     width: 980px;
   }
   .widget {
-    height: 30rem;
+    height: 27rem;
     background-color: #fff;
     border-radius: 5px;
     margin: .8rem;
@@ -102,16 +102,16 @@
       align-items: center;
       padding: 20px;
       &.green {
-        background-color: rgb(4, 67, 66);
+        background-color: #a5d6a7;
       }
       &.yellow {
-        background-color: rgb(237, 158, 32);
+        background-color:#ffe082;
       }
       &.red {
-        background-color: rgb(126, 5, 5);
+        background-color:#FFA1B5;
       }
       &.blue {
-        background-color: rgb(105, 32, 251);
+        background-color: #86C7F3;
       }
       @media only screen and (max-width: 1600px) {
         width: 300px;
