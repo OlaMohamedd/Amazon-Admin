@@ -17,4 +17,6 @@ export class ControlSellerService {
 
   deleteSeller(sellerId: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/seller/${sellerId}`);
-  }}
+  }
+
+}
