@@ -191,15 +191,15 @@ export class ProductsComponent implements OnInit {
       const infoInputAr = this.info_ar?.value
         ? this.info_ar?.value.split(',').filter(Boolean)
         : '';
-      let notMatchedAr = infoInputAr
-        ? infoInputAr.find((item: string) => {
-            return !item.match(this.checkObjStr);
-          })
-        : false;
-      if (notMatchedAr) {
-        alert('Enter a valid structure for info AR');
-        return;
-      }
+      // let notMatchedAr = infoInputAr
+      //   ? infoInputAr.find((item: string) => {
+      //       return !item.match(this.checkObjStr);
+      //     })
+      //   : false;
+      // if (notMatchedAr) {
+      //   alert('Enter a valid structure for info AR');
+      //   return;
+      // }
       let enAboutItem = this.aboutItem_en?.value.split(',').filter(Boolean);
       let arAboutItem = this.aboutItem_ar?.value.split(',').filter(Boolean);
 
