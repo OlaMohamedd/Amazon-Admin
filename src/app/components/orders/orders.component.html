@@ -1,6 +1,6 @@
 <h1>orders</h1>
-<div class="shadow">
-  <table class=" table ">
+<div class=" order-table shadow ">
+  <table class=" table  ">
     <thead>
 
       <th class="order-th shadow">order</th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let order of orders ;index as i" class="order-tr-light shadow">
+      <tr *ngFor="let order of orders ;index as i" class="order-tr-light ">
         <td class="order-td ">{{order.user.fristName}} {{order.user.lastName}}</td>
         <td class="order-td">{{order.createdAt |date}}</td>
         <td class="order-td ">{{items(order.products)}}</td>
