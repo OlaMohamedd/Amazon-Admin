@@ -40,4 +40,16 @@ export class ControlSellerComponent implements OnInit {
       }
     });
 }
+changeStatus(sellerId: string,status: string){
+   this.sellerService.changeStatus(sellerId,status).subscribe({
+    next:(response) => {
+      console.log(response);
+    //  if(seller.status=='warning'){
+    //   seller.status='blocked';
+    //  }
+    },
+    error:(error) => {
+    }
+  });
+}
 }

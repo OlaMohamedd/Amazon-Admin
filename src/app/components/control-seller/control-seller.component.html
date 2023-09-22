@@ -6,6 +6,7 @@
         <th class="order-th shadow ">Email</th>
         <th class="order-th shadow ">Category</th>
         <th class="order-th shadow "></th>
+        <th class="order-th shadow "></th>
 
 
     </thead>
@@ -23,6 +24,9 @@
             <td>{{ seller.category }}</td>
             <td>
                 <button class="btn btn-danger" (click)="deleteSeller(seller._id)">Delete</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="changeStatus(seller._id, seller.status)">Change Status</button>
             </td>
         </tr>
     </tbody>
