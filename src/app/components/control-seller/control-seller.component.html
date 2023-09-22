@@ -5,8 +5,10 @@
         <th class="order-th shadow">Status</th>
         <th class="order-th shadow ">Email</th>
         <th class="order-th shadow ">Category</th>
-        <th class="order-th shadow "></th>
-
+    
+        
+         
+        
 
     </thead>
     <tbody>
@@ -23,6 +25,9 @@
             <td>{{ seller.category }}</td>
             <td>
                 <button class="btn btn-danger" (click)="deleteSeller(seller._id)">Delete</button>
+            </td>
+            <td>
+                <button class="btn btn-dark" (click)="deleteSeller(seller._id)">Change Status</button>
             </td>
         </tr>
     </tbody>
