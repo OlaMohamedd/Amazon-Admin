@@ -31,8 +31,8 @@ const routes: Routes = [
   {path: 'settings', component: SettingsComponent ,canActivate: [adminGuardGuard] , title:"Settings"},
   {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] , title:"Orders"},
   {path: 'order-details/:id', component: OrderDetailsComponent ,canActivate: [adminGuardGuard] , title:"Order Details"},
-  {path: 'login', component: LogInComponent , title:"Login"}
-  {path: 'sellers', component: ControlSellerComponent ,title:"Sellers"},
+  {path: 'login', component: LogInComponent , title:"Login"},
+  {path: 'sellers', component: ControlSellerComponent ,title:"Sellers" ,canActivate: [adminGuardGuard]},
 
 ];SettingsComponent
 
