@@ -24,6 +24,7 @@ import { TopThreeProductsComponent } from './components/dashboard/top-three-prod
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
 import { ProductsComponent } from './components/products/products.component';
+import { ControlSellerComponent } from './components/control-seller/control-seller.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProductsComponent } from './components/products/products.component';
     LastFewTransactionsComponent,
     SalesByCategoryComponent,
     TopThreeProductsComponent,
-    ProductsComponent
+    ProductsComponent,
+    ControlSellerComponent,
   ],
   imports: [
     BrowserModule,

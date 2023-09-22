@@ -1,0 +1,29 @@
+<h2>Seller List</h2>
+<table class=" table ">
+    <thead>
+        <th class="order-th shadow">First Name</th>
+        <th class="order-th shadow">Status</th>
+        <th class="order-th shadow ">Email</th>
+        <th class="order-th shadow ">Category</th>
+        <th class="order-th shadow "></th>
+
+
+    </thead>
+    <tbody>
+
+        <tr class="info" *ngFor="let seller of sellers">
+            <td>{{ seller.firstName }}</td>
+            <td>
+                <span class="px-2 py-1 rounded"
+                    [ngClass]="{'text-white bg-success': seller.status === 'unblocked','text-dark bg-warning': seller.status === 'warning','text-dark bg-danger': seller.status === 'blocked'}">
+                    {{seller.status}}
+                </span>
+            </td>
+            <td>{{ seller.email }}</td>
+            <td>{{ seller.category }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteSeller(seller._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -11,6 +11,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { adminGuardGuard } from './Guards/admin-guard.guard';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { NgModule } from '@angular/core';
+import { ControlSellerComponent } from './components/control-seller/control-seller.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'  , title:"Dashboard"},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] , title:"Orders"},
   {path: 'order-details/:id', component: OrderDetailsComponent ,canActivate: [adminGuardGuard] , title:"Order Details"},
   {path: 'login', component: LogInComponent , title:"Login"}
+  {path: 'sellers', component: ControlSellerComponent ,title:"Sellers"},
 
 ];SettingsComponent
 

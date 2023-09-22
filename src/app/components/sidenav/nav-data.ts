@@ -33,9 +33,9 @@ export const navbarData: INavbarData[] = [
         ]
     },
     {
-        routeLink: 'pages',
-        icon: 'fal fa-file',
-        label: 'Pages'
+        routeLink: 'sellers',
+        icon: 'fal fa-regular fa-user',
+        label: 'Sellers List'
     },
     {
         routeLink: 'orders',
