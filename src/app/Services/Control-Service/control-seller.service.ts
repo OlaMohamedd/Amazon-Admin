@@ -21,7 +21,7 @@ export class ControlSellerService {
   }
 
   changeStatus(sellerId: string,status:string): Observable<any> {
-    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, JSON.stringify(status));
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`,{status:"blocked"});
   }
 
 }
