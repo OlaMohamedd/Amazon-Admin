@@ -5,10 +5,8 @@
         <th class="order-th shadow">Status</th>
         <th class="order-th shadow ">Email</th>
         <th class="order-th shadow ">Category</th>
-    
-        
-         
-        
+        <td class="order-th shadow text-center " colspan="2">Actions</td>
+
 
     </thead>
     <tbody>
@@ -24,11 +22,12 @@
             <td>{{ seller.email }}</td>
             <td>{{ seller.category }}</td>
             <td>
-                <button class="btn btn-danger" (click)="deleteSeller(seller._id)">Delete</button>
+                <i (click)="deleteSeller(seller._id)" class="fas fa-solid fa-trash " style="color: #b60c0c;"></i>
+                <!-- <i class="fas fa-duotone fa-user-pen" style="--fa-primary-color: #1d47c3; --fa-secondary-color: #000000;"></i> -->
             </td>
-            <td>
-                <button class="btn btn-dark" (click)="deleteSeller(seller._id)">Change Status</button>
-            </td>
+         
+            
+            
         </tr>
     </tbody>
 </table>
