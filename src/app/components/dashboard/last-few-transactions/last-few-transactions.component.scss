@@ -64,9 +64,11 @@
 //   }
 
 .transactions {
+  width: 100% !important;
   .transaction-wrapper {
     overflow: auto;
     height: 11.5625rem;
+   
   }
   .title {
     padding: 1.25rem;
@@ -81,6 +83,7 @@
     align-items: center;
     padding: 0.3125rem 1.25rem;
     border-bottom: 1px solid #f0f0f0;
+ 
   }
   .image {
     width: 3.4375rem;
