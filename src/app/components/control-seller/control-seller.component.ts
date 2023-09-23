@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlSellerService } from 'src/app/Services/Control-Service/control-seller.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-control-seller',
@@ -33,6 +34,7 @@ export class ControlSellerComponent implements OnInit {
         const index = this.sellers.findIndex(seller => seller._id === sellerId);
         if (index !== -1) {
           this.sellers[index].status = 'deleted';
+          Swal.fire({title:'Update statue!',text:"Seller deleted", icon:'success'});
         }
       },
       error:(error) => {
@@ -40,16 +42,20 @@ export class ControlSellerComponent implements OnInit {
       }
     });
 }
-changeStatus(sellerId: string,status: string){
-   this.sellerService.changeStatus(sellerId,status).subscribe({
-    next:(response) => {
-      console.log(response);
-    //  if(seller.status=='warning'){
-    //   seller.status='blocked';
-    //  }
-    },
-    error:(error) => {
-    }
-  });
+changeStatus(sellerId: string, status: string) {
+  const index = this.sellers.findIndex(seller => seller._id === sellerId);
+  if (index !== -1) {
+    this.sellerService.changeStatus(sellerId, status).subscribe({
+      next: (response) => {
+        console.log(response);
+        if (status == 'warning') {
+          this.sellers[index].status = 'blocked';
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 }
 }
