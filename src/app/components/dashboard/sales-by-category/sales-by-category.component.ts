@@ -28,7 +28,7 @@ export class SalesByCategoryComponent {
     },
   };
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'],
+    labels: [['Mobile Phones'], ['Mentiors'], 'Fashion'],
     datasets: [
       {
         data: [300, 500, 100],

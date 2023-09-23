@@ -14,24 +14,25 @@ import { NgModule } from '@angular/core';
 import { ControlSellerComponent } from './components/control-seller/control-seller.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'  , title:"Dashboard"},
+  {path: 'dashboard', component: DashboardComponent ,canActivate: [adminGuardGuard] , title:"Dashboard"},
   {
-    path: 'products',component:ProductsComponent
-    // canActivate: [adminGuardGuard]
+    path: 'products',component:ProductsComponent,
+   canActivate: [adminGuardGuard ] , title:"Products"
   },
-  {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard]},
+  {path: 'statistics', component: StatisticsComponent ,canActivate: [adminGuardGuard] , title:"Statistics"},
   {
     path: 'coupens',
     loadChildren: () => import('./components/coupens/coupens.module').then(m => m.CoupensModule)
-    ,canActivate: [adminGuardGuard]
+    ,canActivate: [adminGuardGuard ] , title:"Coupens"
   },
-  {path: 'sellers', component: ControlSellerComponent},
-  {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] },
-  {path: 'order-details/:id', component: OrderDetailsComponent},
-    {path: 'login', component: LogInComponent}
+  {path: 'pages', component: PagesComponent ,canActivate: [adminGuardGuard] , title:"Pages"},
+  {path: 'media', component: MediaComponent ,canActivate: [adminGuardGuard] , title:"Media"},
+  {path: 'settings', component: SettingsComponent ,canActivate: [adminGuardGuard] , title:"Settings"},
+  {path: 'orders', component:OrdersComponent,canActivate: [adminGuardGuard] , title:"Orders"},
+  {path: 'order-details/:id', component: OrderDetailsComponent ,canActivate: [adminGuardGuard] , title:"Order Details"},
+  {path: 'login', component: LogInComponent , title:"Login"},
+  {path: 'sellers', component: ControlSellerComponent ,title:"Sellers" ,canActivate: [adminGuardGuard]},
 
 ];SettingsComponent
 
