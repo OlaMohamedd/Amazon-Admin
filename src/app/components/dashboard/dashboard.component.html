@@ -1,6 +1,6 @@
-<div class="top-section">
-    <div class="widget-container  ">
-        <div class="widget green ">
+<div class="top-section container-fluid p-0">
+    <div class="widget-container row d-flex ">
+        <div class="widget green col-lg-3 col-md-5  ">
           <div class="icon">
             <fa-icon [icon]="faLocation"></fa-icon>
           </div>
@@ -9,7 +9,7 @@
             <div class="bottom">Locations</div>
           </div>
         </div>
-        <div class="widget yellow col-3">
+        <div class="widget yellow col-lg-3 col-md-5  ">
           <div class="icon">
             <fa-icon [icon]="faShop"></fa-icon>
           </div>
@@ -18,7 +18,7 @@
             <div class="bottom">Shops</div>
           </div>
         </div>
-        <div class="widget red col-3">
+        <div class="widget red col-lg-3 col-md-5 ">
           <div class="icon">
             <fa-icon [icon]="faBoxes"></fa-icon>
           </div>
@@ -27,7 +27,7 @@
             <div class="bottom">Products Sold</div>
           </div>
         </div>
-        <div class="widget blue col-3">
+        <div class="widget blue col-lg-3 col-md-5">
           <div class="icon">
             <fa-icon [icon]="faMoneyBill"></fa-icon>
           </div> 
@@ -38,7 +38,7 @@
         </div>
       </div>
         </div>
-        <div class="middle-section">
+        <div class="middle-section d-flex flex-lg-row flex-column">
             <div class="widget left">
               <app-sales-by-month></app-sales-by-month>
             </div>
@@ -46,11 +46,11 @@
               <app-sales-by-category></app-sales-by-category>
             </div>
           </div>
-    <div class="bottom-section">
-        <div class="widget left">
+    <div class="bottom-section d-flex flex-lg-row flex-column w-100">
+        <div class="widget left w-50">
           <app-last-few-transactions></app-last-few-transactions>
         </div>
-        <div class="widget right">
+        <div class="widget right w-50">
             <app-top-three-products></app-top-three-products>
           </div>
       </div>

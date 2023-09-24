@@ -155,18 +155,20 @@
 //   }
   
 .top-section {
-  width: 90%;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+box-sizing: border-box;
 
-  @media (max-width: 890px) {
-    
-      flex-direction: column;
-    
-   
-  }
+  // @media only screen and (max-width: 890px) {
+  //   width: 30rem;
+  // }
+  // @media only screen and (max-width: 1500px) {
+  //   width: 74rem;
+  // }
+  // @media only screen and (max-width: 1400px) {
+  //   width: 68rem;
+  // }
+  // @media only screen and (max-width: 1200px) {
+  //   width: 60rem;
+  // }
 }
 
 .middle-section {
@@ -234,11 +236,12 @@
   align-items: center;
   .widget {
     // width: 5rem;
-    // height: 10rem;
+    height: 10rem;
     background-color: #fff;
     color: #fff;
     border-radius: 5px;
-    margin: .25rem;
+    // margin: .25rem;
+    margin:auto;
     box-shadow: 0.3125rem 0.3125rem 0.3125rem #939393;
     width: 25vw;
   height: 25vh;
@@ -266,7 +269,18 @@
     &.blue {
       background-color: #86C7F3;
     }
-    
+    // @media only screen and (max-width: 1600px) {
+    //   width: 18.75rem;
+    // }
+    // @media only screen and (max-width: 1500px) {
+    //   width: 17.1875rem;
+    // }
+    // @media only screen and (max-width: 1400px) {
+    //   width: 15.625rem;
+    // }
+    // @media only screen and (max-width: 1200px) {
+    //   width: 14.0625rem;
+    // }
     .icon {
       width: 6.25rem;
       font-size: 3.75rem;
