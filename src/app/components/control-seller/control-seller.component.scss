@@ -29,3 +29,27 @@
 
 
 }
+.scroll{
+    white-space: nowrap;
+    overflow: auto;
+    width: 100%;
+}
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-table th {
+    padding: 12px 15px;
+    background-color: #e9ecef;
+    border-top: 2px solid #dee2e6;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+    font-weight: 600;
+    color: #212529;
+  }
+  
+
+  

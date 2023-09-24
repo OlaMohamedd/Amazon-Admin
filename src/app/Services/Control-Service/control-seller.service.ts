@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class ControlSellerService {
 
   deleteSeller(sellerId: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/seller/${sellerId}`);
+  }
+
+  changeStatus(sellerId: string,status:string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`,{status:"blocked"});
   }
 
 }

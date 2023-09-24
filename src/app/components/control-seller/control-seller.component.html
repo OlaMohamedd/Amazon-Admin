@@ -1,33 +1,33 @@
 <h2>Seller List</h2>
-<table class=" table ">
-    <thead>
-        <th class="order-th shadow">First Name</th>
-        <th class="order-th shadow">Status</th>
-        <th class="order-th shadow ">Email</th>
-        <th class="order-th shadow ">Category</th>
-        <td class="order-th shadow text-center " colspan="2">Actions</td>
-
-
-    </thead>
-    <tbody>
-
-        <tr class="info" *ngFor="let seller of sellers">
-            <td>{{ seller.firstName }}</td>
-            <td>
-                <span class="px-2 py-1 rounded"
-                    [ngClass]="{'text-white bg-success': seller.status === 'unblocked','text-dark bg-warning': seller.status === 'warning','text-dark bg-danger': seller.status === 'blocked'}">
-                    {{seller.status}}
-                </span>
-            </td>
-            <td>{{ seller.email }}</td>
-            <td>{{ seller.category }}</td>
-            <td>
-                <i (click)="deleteSeller(seller._id)" class="fas fa-solid fa-trash " style="color: #b60c0c;"></i>
-                <!-- <i class="fas fa-duotone fa-user-pen" style="--fa-primary-color: #1d47c3; --fa-secondary-color: #000000;"></i> -->
-            </td>
-         
-            
-            
-        </tr>
-    </tbody>
-</table>
+<div class="scroll">
+    <table class="table custom-table ">
+        <thead>
+            <th class="order-th shadow">First Name</th>
+            <th class="order-th shadow">Status</th>
+            <th class="order-th shadow ">Email</th>
+            <th class="order-th shadow ">Category</th>
+            <td class="order-th shadow text-center " colspan="2">Actions</td>
+    
+    
+        </thead>
+        <tbody>
+    
+            <tr class="info" *ngFor="let seller of sellers">
+                <td>{{ seller.firstName }}</td>
+                <td>
+                    <span class="px-2 py-1 rounded"
+                        [ngClass]="{'text-white bg-success': seller.status === 'unblocked','text-dark bg-warning': seller.status === 'warning','text-dark bg-danger': seller.status === 'blocked'}">
+                        {{seller.status}}
+                    </span>
+                </td>
+                <td>{{ seller.email }}</td>
+                <td>{{ seller.category }}</td>
+                <td>
+                    <i (click)="deleteSeller(seller._id)" class="fas fa-solid fa-trash ms-4" style="color: #b60c0c;"></i>
+                    <i class="fas fa-solid fa-user-slash ms-4" *ngIf="seller.status == 'warning'" (click)="changeStatus(seller._id, seller.status)"></i>
+                            </td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
