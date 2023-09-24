@@ -91,8 +91,8 @@ deleteSeller(sellerId: string) {
 //   }
   changeStatus(sellerId: string, status: string) {
     if (status == 'warning') {
-      this.sellerService.changeStatus(sellerId, status).subscribe(
-        (res) => {
+      this.sellerService.changeStatus(sellerId, status).subscribe({
+        next:(res) => {
           console.log(res);
           const index = this.sellers.findIndex((seller) => seller._id === sellerId);
           if (index !== -1) {
@@ -100,10 +100,10 @@ deleteSeller(sellerId: string) {
             this.loadSellers();
           }
         },
-        (error) => {
+        error:(error) => {
           console.log(error);
         }
-      );
+    });
     }
   }
 }
