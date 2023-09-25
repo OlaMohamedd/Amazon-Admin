@@ -20,12 +20,14 @@ export class OrderDetailsComponent implements OnInit{
       this.details = res.data;
       this.details.products.forEach(product=>{
         this.totalPrice += product?.product?.price?.new*product.quantity;
+        this.totalitems+=product?.quantity
+
       });
     })
   }
   items(t:any){
 
-    this.totalitems+=t
+    // this.totalitems+=t
   }
   
 }
