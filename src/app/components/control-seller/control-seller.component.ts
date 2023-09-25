@@ -30,10 +30,9 @@ export class ControlSellerComponent implements OnInit {
 
 deleteSeller(sellerId: string) {
   Swal.fire({
-    title: 'Delete order!',
-    text: 'Do you want to delete order',
+    title: 'Do you want to delete Seller❔',
     icon: 'question',
-    confirmButtonText: 'Delete Order',
+    confirmButtonText: 'Delete Seller',
     cancelButtonText: 'Cancel',
     showCancelButton: true
   }).then((res) => {
@@ -41,7 +40,7 @@ deleteSeller(sellerId: string) {
       this.sellerService.deleteSeller(sellerId).subscribe({
        next:(response) => {
           console.log(response);
-            Swal.fire({ title: 'Order deleted!', text: 'Order deleted', icon: 'success' });
+            Swal.fire({ title: 'Seller deleted', text: 'Seller deleted', icon: 'success' });
             this.loadSellers(); 
         },
        error: (error) => {
