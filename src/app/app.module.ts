@@ -1,6 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
@@ -25,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgChartsModule } from 'ng2-charts';
 import { ProductsComponent } from './components/products/products.component';
 import { ControlSellerComponent } from './components/control-seller/control-seller.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { ControlSellerComponent } from './components/control-seller/control-sell
     TopThreeProductsComponent,
     ProductsComponent,
     ControlSellerComponent,
+    CategoryComponent,
+
   ],
   imports: [
     BrowserModule,
