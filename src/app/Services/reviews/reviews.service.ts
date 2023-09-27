@@ -5,14 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ReviewsService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getAllProducts():Observable<any[]>{
+  getAllReviews():Observable<any[]>{
     
-    return this.httpClient.get<any[]>('http://localhost:3300/product');
+    return this.httpClient.get<any[]>('http://localhost:3300/review');
    }
-
- 
 }
