@@ -5,6 +5,7 @@ import { Category } from 'src/Models/category';
 import { Product } from 'src/Models/product';
 import { ProductsService } from 'src/services/products.service';
 import { CategoryService } from 'src/services/category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -287,14 +288,28 @@ export class ProductsComponent implements OnInit {
   }
 
   delete(product: Product) {
-    let confirmDelete = confirm('Do You really Want to delete this product ');
-    if (confirmDelete) {
-      this.productServices.deleteProducts(product).subscribe(() => {
-        this.productList = this.productList.filter(
-          (prod) => prod._id !== product._id
-        );
-      });
-    }
+    Swal.fire({
+      title: 'Do you want to delete This Product',
+      icon: 'question',
+      confirmButtonText: 'Delete Product',
+      cancelButtonText: 'Cancel',
+      showCancelButton: true,
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.productServices.deleteProducts(product).subscribe(() => {
+            this.productList = this.productList.filter(
+              (prod) => prod._id !== product._id,
+              Swal.fire({
+                title: 'Product deleted',
+                text: 'Product deleted',
+                icon: 'success',
+              })
+            );
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
   language: string = 'en';
   changLanguage() {
