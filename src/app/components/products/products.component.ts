@@ -31,8 +31,14 @@ export class ProductsComponent implements OnInit {
   ) {
     this.productForm = new FormGroup({
       quantity: new FormControl('', [Validators.pattern(this.checkNumber)]),
-      title_en: new FormControl('', [Validators.required]),
-      title_ar: new FormControl('', [Validators.required]),
+      title_en: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.checkString),
+      ]),
+      title_ar: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.checkString),
+      ]),
       img: new FormControl('', [Validators.required]),
       oldPrice: new FormControl('', [Validators.pattern(this.checkNumber)]),
       newPrice: new FormControl('', [
@@ -83,13 +89,13 @@ export class ProductsComponent implements OnInit {
         });
       });
     });
-    this.categoryService.getAllCategory().subscribe((data)=>{
-      let catObj:any=data;
-      this.categoryList=catObj.data;
+    this.categoryService.getAllCategory().subscribe((data) => {
+      let catObj: any = data;
+      this.categoryList = catObj.data;
       console.log('====================================');
       console.log(this.categoryList);
       console.log('====================================');
-    })
+    });
   }
   get title_en() {
     return this.productForm.get('title_en');
@@ -134,47 +140,20 @@ export class ProductsComponent implements OnInit {
     return this.productForm.get('aboutItem_ar');
   }
 
-
   //other id
-  categoryId:any='65133a2e6c55f99db5e4cdcb';
-   checkedCategory:string='other';
-   checkedCategoryAr:string='الباقون';
-   changeCategory(name_en:string,name_ar:string,id:any){
-    this.checkedCategory=name_en;
-    this.checkedCategoryAr=name_ar;
-    this.categoryId=id;
+  categoryId: any = '65133a2e6c55f99db5e4cdcb';
+  checkedCategory: string = 'other';
+  checkedCategoryAr: string = 'الباقون';
+  changeCategory(name_en: string, name_ar: string, id: any) {
+    this.checkedCategory = name_en;
+    this.checkedCategoryAr = name_ar;
+    this.categoryId = id;
   }
   get quantity() {
     return this.productForm.get('quantity');
   }
-  // getCategoryInProgress: boolean = false;
-  // getCategory() {
-  //   if (this.getCategoryInProgress) {
-  //     return;
-  //   }
-
-  //   this.getCategoryInProgress = true;
-
-  //   let catData: any;
-  //   let allCategories = [] as any;
-  //   this.categoryService.getAllCategory().subscribe((data) => {
-  //     catData = data;
-  //     allCategories = catData.data;
-  //     let foundCategory = allCategories.find(
-  //       (category: { _id: any }) => category._id == this.categoryId?.value
-  //     );
-
-  //     if (!foundCategory) {
-  //       alert('No Category Found');
-  //     }
-
-  //     this.getCategoryInProgress = false;
-  //     this.onSubmit();
-  //   });
-  // }
 
   onSubmit() {
-
     if (!this.productId) {
       const infoInputEn = this.info_en?.value
         ? this.info_en?.value.split(',').filter(Boolean)
@@ -198,8 +177,8 @@ export class ProductsComponent implements OnInit {
         let categoryValue =
           {
             _id: this.categoryId,
-            name_en: "this.category.name_en",
-            name_ar: "this.category.name_ar",
+            name_en: this.checkedCategory,
+            name_ar: this.checkedCategoryAr,
           } || null;
         const product: Product = {
           quantity: this.quantity?.value,
@@ -287,13 +266,12 @@ export class ProductsComponent implements OnInit {
         info_ar: infoInputAr,
         aboutItem_en: enAboutItemArr,
         aboutItem_ar: ArAboutItemArr,
-        categoryId:
-          {
-            _id: this.categoryId,
-            name_en:"",
-            name_ar: "",
-      }
-    };
+        categoryId: {
+          _id: this.categoryId,
+          name_en: this.checkedCategory,
+          name_ar: this.checkedCategoryAr,
+        },
+      };
 
       this.productServices.updateProducts(product).subscribe(() => {
         this.productServices.getAllProducts().subscribe((data) => {
@@ -309,14 +287,14 @@ export class ProductsComponent implements OnInit {
   }
 
   delete(product: Product) {
-let confirmDelete=confirm('Do You really Want to delete this product ')
-   if(confirmDelete){
-    this.productServices.deleteProducts(product).subscribe(() => {
-      this.productList = this.productList.filter(
-        (prod) => prod._id !== product._id
-      );
-    });
-   }
+    let confirmDelete = confirm('Do You really Want to delete this product ');
+    if (confirmDelete) {
+      this.productServices.deleteProducts(product).subscribe(() => {
+        this.productList = this.productList.filter(
+          (prod) => prod._id !== product._id
+        );
+      });
+    }
   }
   language: string = 'en';
   changLanguage() {

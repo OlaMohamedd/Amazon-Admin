@@ -57,8 +57,8 @@
               <span
                 class="text-danger"
                 *ngIf="
-                  title_en?.hasError('pattern') &&
-                  (title_en?.touched || title_en?.dirty)
+                  title_en?.hasError('pattern') && title_en?.invalid &&
+                  ( title_en?.touched || title_en?.dirty )
                 "
               >
                 Title is Required and at least the first four characters must be
