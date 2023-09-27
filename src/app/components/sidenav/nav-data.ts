@@ -13,25 +13,11 @@ export const navbarData: INavbarData[] = [
        
     },
     {
-        routeLink: 'statistics',
-        icon: 'fal fa-chart-bar',
-        label: 'Statistics'
+        routeLink: 'category',
+        icon: 'fal fa-store',
+        label: 'category'
     },
-    {
-        routeLink: 'coupens',
-        icon: 'fal fa-tags',
-        label: 'Coupens',
-        items: [
-            {
-                routeLink: 'coupens/list',
-                label: 'List Coupens'
-            },
-            {
-                routeLink: 'coupens/create',
-                label: 'Create Coupens'
-            }
-        ]
-    },
+  
     {
         routeLink: 'sellers',
         icon: 'fal fa-regular fa-user',
@@ -42,22 +28,7 @@ export const navbarData: INavbarData[] = [
         icon: 'fal fa-solid fa-cart-arrow-down',
         label: 'Orders'
     },
-    {
-        routeLink: 'settings',
-        icon: 'fal fa-cog',
-        label: 'Settings',
-        expanded: true,
-        items: [
-            {
-                routeLink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routeLink: 'settings/customize',
-                label: 'Customize'
-            }
-        ]
-    },
+   
     // {
     //     routeLink: 'login',
     //     icon: 'fal fa-solid fa-lock-open',

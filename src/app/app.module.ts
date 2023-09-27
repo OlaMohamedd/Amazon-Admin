@@ -1,6 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
@@ -22,6 +23,10 @@ import { LastFewTransactionsComponent } from './components/dashboard/last-few-tr
 import { SalesByMonthComponent } from './components/dashboard/sales-by-month/sales-by-month.component';
 import { SalesByCategoryComponent } from './components/dashboard/sales-by-category/sales-by-category.component';
 import { TopThreeProductsComponent } from './components/dashboard/top-three-products/top-three-products.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgChartsModule } from 'ng2-charts';
+import { ControlSellerComponent } from './components/control-seller/control-seller.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 @NgModule({
@@ -43,6 +48,10 @@ import { TopThreeProductsComponent } from './components/dashboard/top-three-prod
     LastFewTransactionsComponent,
     SalesByCategoryComponent,
     TopThreeProductsComponent,
+    ProductsComponent,
+    ControlSellerComponent,
+    CategoryComponent,
+
   ],
   imports: [
     BrowserModule,

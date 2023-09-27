@@ -30,10 +30,9 @@ export class ControlSellerComponent implements OnInit {
 
 deleteSeller(sellerId: string) {
   Swal.fire({
-    title: 'Delete order!',
-    text: 'Do you want to delete order',
+    title: 'Do you want to delete Seller❔',
     icon: 'question',
-    confirmButtonText: 'Delete Order',
+    confirmButtonText: 'Delete Seller',
     cancelButtonText: 'Cancel',
     showCancelButton: true
   }).then((res) => {
@@ -41,7 +40,7 @@ deleteSeller(sellerId: string) {
       this.sellerService.deleteSeller(sellerId).subscribe({
        next:(response) => {
           console.log(response);
-            Swal.fire({ title: 'Order deleted!', text: 'Order deleted', icon: 'success' });
+            Swal.fire({ title: 'Seller deleted', text: 'Seller deleted', icon: 'success' });
             this.loadSellers(); 
         },
        error: (error) => {
@@ -52,18 +51,80 @@ deleteSeller(sellerId: string) {
   });
 }
 
-  changeStatus(sellerId: string, status: string) {
-    if (status == 'warning') {
-      this.sellerService.changeStatus(sellerId, status).subscribe({
-        next:(res) => {
-          console.log(res);
-            this.loadSellers();
-        },
-        error:(error) => {
-          console.log(error);
-        }
+  // changeStatus(sellerId: string, status: string) {
+  //   if (status == 'warning' ) {
+  //     this.sellerService.changeStatusToWarning(sellerId, status).subscribe({
+  //       next:(res) => {
+  //         console.log(res);
+  //           this.loadSellers();
+  //       },
+  //       error:(error) => {
+  //         console.log(error);
+  //       }
+  //   });
+  //   }
+  //   if (status == 'bloked' ) {
+  //     this.sellerService.changeStatusToBlocked(sellerId, status).subscribe({
+  //       next:(res) => {
+  //         console.log(res);
+  //           this.loadSellers();
+  //       },
+  //       error:(error) => {
+  //         console.log(error);
+  //       }
+  //   });
+  //   }
+  //   if (status == 'unblocked' ) {
+  //     this.sellerService.changeStatusToUnblocked(sellerId, status).subscribe({
+  //       next:(res) => {
+  //         console.log(res);
+  //           this.loadSellers();
+  //       },
+  //       error:(error) => {
+  //         console.log(error);
+  //       }
+  //   });
+  //   }
+  // }
+
+
+changeStatus(event: Event, sellerId: string) {
+  const selectedStatus = (event.target as HTMLSelectElement).value;
+
+  if (selectedStatus == 'warning' ) {
+    this.sellerService.changeStatusToWarning(sellerId, selectedStatus).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.loadSellers();
+      },
+      error: (error) => {
+        console.log(error);
+      }
     });
-    }
   }
+  if (selectedStatus == 'blocked') {
+    this.sellerService.changeStatusToBlocked(sellerId, selectedStatus).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.loadSellers();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+  if (selectedStatus == 'Active') {
+    this.sellerService.changeStatusToUnblocked(sellerId, selectedStatus).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.loadSellers();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+}
+
 }
 

@@ -3,8 +3,11 @@
 
 .order-table{
     width: 100%;
-    // min-width: 500px ;
-    background-color: white;
+    // max-width:500px ;
+    white-space: nowrap;
+    overflow: auto;
+
+    // background-color: white;
 
 }
 .order-th{
