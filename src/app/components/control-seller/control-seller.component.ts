@@ -114,7 +114,7 @@ changeStatus(event: Event, sellerId: string) {
       }
     });
   }
-  if (selectedStatus == 'unblocked') {
+  if (selectedStatus == 'Active') {
     this.sellerService.changeStatusToUnblocked(sellerId, selectedStatus).subscribe({
       next: (res) => {
         console.log(res);

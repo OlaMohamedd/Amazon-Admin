@@ -27,7 +27,7 @@ export class ControlSellerService {
     return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'blocked'});
   }
   changeStatusToUnblocked(sellerId: string, status: string): Observable<any> {
-    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'unblocked'});
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'Active'});
   }
   changeStatusToWarning(sellerId: string, status: string): Observable<any> {
     return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'warning'});

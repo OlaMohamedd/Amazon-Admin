@@ -16,7 +16,7 @@
                 <td>{{ seller.firstName }}</td>
                 <td>
                     <span class="px-2 py-1 rounded"
-                        [ngClass]="{'text-white bg-success': seller.status === 'unblocked','text-dark bg-warning': seller.status === 'warning','text-dark bg-danger': seller.status === 'blocked'}">
+                        [ngClass]="{'text-white bg-success': seller.status === 'Active','text-dark bg-warning': seller.status === 'warning','text-dark bg-danger': seller.status === 'blocked'}">
                         {{seller.status}}
                     </span>
                 </td>
@@ -25,7 +25,7 @@
                 <td class="d-flex">
                     <select class="form-select w-50 ms-5" [(ngModel)]="seller.status" (change)="changeStatus($event, seller._id)">
                       <!-- <option >Change Status</option> -->
-                      <option value="unblocked">Unblocked</option>
+                      <option value="Active">Active</option>
                       <option value="blocked">Blocked</option>
                       <option value="warning">Warning</option>
                     </select>
