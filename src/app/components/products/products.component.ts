@@ -5,6 +5,7 @@ import { Category } from 'src/Models/category';
 import { Product } from 'src/Models/product';
 import { ProductsService } from 'src/services/products.service';
 import { CategoryService } from 'src/services/category.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { CategoryService } from 'src/services/category.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  category: Category = {} as Category;
+  categoryList: Category[] = [];
   productId?: string | null;
   productsObj = {} as any;
   productList: Product[] = [];
@@ -21,7 +22,7 @@ export class ProductsComponent implements OnInit {
   checkNumber = /^[0-9]{1,6}$/;
   checkString2 = /(?:[0-9a-z  ا-ي آ-ی]{5,},)+/i;
   checkObjStr = /^[a-zA-Z, 0-9]+:[a-zA-Z, 0-9]+$/i;
-  categoryIdReg = /^[0-9a-z]{10,}$/i;
+  // categoryIdReg = /^[0-9a-z]{10,}$/i;
   productForm!: FormGroup;
   product!: Product;
   constructor(
@@ -32,8 +33,14 @@ export class ProductsComponent implements OnInit {
   ) {
     this.productForm = new FormGroup({
       quantity: new FormControl('', [Validators.pattern(this.checkNumber)]),
-      title_en: new FormControl('', [Validators.required]),
-      title_ar: new FormControl('', [Validators.required]),
+      title_en: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.checkString),
+      ]),
+      title_ar: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.checkString),
+      ]),
       img: new FormControl('', [Validators.required]),
       oldPrice: new FormControl('', [Validators.pattern(this.checkNumber)]),
       newPrice: new FormControl('', [
@@ -50,10 +57,6 @@ export class ProductsComponent implements OnInit {
       ]),
       aboutItem_ar: new FormControl('', [
         Validators.pattern(this.checkString2),
-      ]),
-      categoryId: new FormControl('', [
-        Validators.required,
-        Validators.pattern(this.categoryIdReg),
       ]),
     });
   }
@@ -87,6 +90,13 @@ export class ProductsComponent implements OnInit {
           categoryId: this.product.categoryId || '',
         });
       });
+    });
+    this.categoryService.getAllCategory().subscribe((data) => {
+      let catObj: any = data;
+      this.categoryList = catObj.data;
+      console.log('====================================');
+      console.log(this.categoryList);
+      console.log('====================================');
     });
   }
   get title_en() {
@@ -132,50 +142,20 @@ export class ProductsComponent implements OnInit {
     return this.productForm.get('aboutItem_ar');
   }
 
-  get categoryId() {
-    return this.productForm.get('categoryId');
+  //other id
+  categoryId: any = '65133a2e6c55f99db5e4cdcb';
+  checkedCategory: string = 'other';
+  checkedCategoryAr: string = 'الباقون';
+  changeCategory(name_en: string, name_ar: string, id: any) {
+    this.checkedCategory = name_en;
+    this.checkedCategoryAr = name_ar;
+    this.categoryId = id;
   }
   get quantity() {
     return this.productForm.get('quantity');
   }
-  getCategoryInProgress: boolean = false;
-
-  getCategory() {
-    if (this.getCategoryInProgress) {
-      return;
-    }
-    let catData: any;
-    let allCategories = [] as any;
-    this.categoryService.getAllCategory().subscribe((data) => {
-      catData = data;
-      allCategories = catData.data;
-      let foundCategory = allCategories.find(
-        (category: { _id: any }) => category._id == this.categoryId?.value
-      );
-      if (foundCategory) {
-        try {
-          this.getCategoryInProgress = true;
-          this.categoryService
-            .getCategoryById(this.categoryId?.value)
-            .subscribe((data) => {
-              this.category = data.data;
-
-              this.onSubmit();
-              this.getCategoryInProgress = false;
-            });
-        } catch (err) {
-          alert(`Error Fetching category ${err}`);
-          this.getCategoryInProgress = false;
-        }
-      } else {
-        alert('Enter a valid category id');
-        this.getCategoryInProgress = false;
-      }
-    });
-  }
 
   onSubmit() {
-    this.getCategory();
     if (!this.productId) {
       const infoInputEn = this.info_en?.value
         ? this.info_en?.value.split(',').filter(Boolean)
@@ -192,19 +172,16 @@ export class ProductsComponent implements OnInit {
       const infoInputAr = this.info_ar?.value
         ? this.info_ar?.value.split(',').filter(Boolean)
         : '';
-      // let notMatchedAr = infoInputAr
-      //   ? infoInputAr.find((item: string) => {
-      //       return !item.match(this.checkObjStr);
-      //     })
-      //   : false;
-      // if (notMatchedAr) {
-      //   alert('Enter a valid structure for info AR');
-      //   return;
-      // }
       let enAboutItem = this.aboutItem_en?.value.split(',').filter(Boolean);
       let arAboutItem = this.aboutItem_ar?.value.split(',').filter(Boolean);
 
       if (this.productForm.valid) {
+        let categoryValue =
+          {
+            _id: this.categoryId,
+            name_en: this.checkedCategory,
+            name_ar: this.checkedCategoryAr,
+          } || null;
         const product: Product = {
           quantity: this.quantity?.value,
           title_en: this.title_en?.value,
@@ -220,11 +197,7 @@ export class ProductsComponent implements OnInit {
           info_ar: infoInputAr,
           aboutItem_en: enAboutItem,
           aboutItem_ar: arAboutItem,
-          categoryId: {
-            _id: this.categoryId?.value,
-            name_en: this.category.name_en,
-            name_ar: this.category.name_ar,
-          },
+          categoryId: categoryValue,
         };
         this.productServices.addProducts(product).subscribe(() => {
           this.productServices.getAllProducts().subscribe((data) => {
@@ -244,7 +217,7 @@ export class ProductsComponent implements OnInit {
         this.info_ar?.setValue('');
         this.aboutItem_en?.setValue('');
         this.aboutItem_ar?.setValue('');
-        this.categoryId?.setValue('');
+        this.categoryId;
       } else {
         alert('Enter valid values');
       }
@@ -296,9 +269,9 @@ export class ProductsComponent implements OnInit {
         aboutItem_en: enAboutItemArr,
         aboutItem_ar: ArAboutItemArr,
         categoryId: {
-          _id: this.categoryId?.value,
-          name_en: this.category.name_en,
-          name_ar: this.category.name_ar,
+          _id: this.categoryId,
+          name_en: this.checkedCategory,
+          name_ar: this.checkedCategoryAr,
         },
       };
 
@@ -314,12 +287,30 @@ export class ProductsComponent implements OnInit {
   update(product: Product) {
     this.router.navigate(['products', product._id]);
   }
+
   delete(product: Product) {
-    this.productServices.deleteProducts(product).subscribe(() => {
-      this.productList = this.productList.filter(
-        (prod) => prod._id !== product._id
-      );
-    });
+    Swal.fire({
+      title: 'Do you want to delete This Product',
+      icon: 'question',
+      confirmButtonText: 'Delete Product',
+      cancelButtonText: 'Cancel',
+      showCancelButton: true,
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.productServices.deleteProducts(product).subscribe(() => {
+            this.productList = this.productList.filter(
+              (prod) => prod._id !== product._id,
+              Swal.fire({
+                title: 'Product deleted',
+                text: 'Product deleted',
+                icon: 'success',
+              })
+            );
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
   language: string = 'en';
   changLanguage() {
