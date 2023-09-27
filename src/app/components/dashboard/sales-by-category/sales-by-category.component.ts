@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 // import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+//sum function?
 @Component({
   selector: 'app-sales-by-category',
   templateUrl: './sales-by-category.component.html',
