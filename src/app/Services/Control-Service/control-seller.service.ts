@@ -20,8 +20,16 @@ export class ControlSellerService {
     return this.http.delete<any>(`${this.baseUrl}/seller/${sellerId}`);
   }
 
-  changeStatus(sellerId: string,status:string): Observable<any> {
-    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`,{status:"blocked"});
+  // changeStatus(sellerId: string,status:string): Observable<any> {
+  //   return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`,{status:"blocked"});
+  // }
+  changeStatusToBlocked(sellerId: string, status: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'blocked'});
   }
-
+  changeStatusToUnblocked(sellerId: string, status: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'Active'});
+  }
+  changeStatusToWarning(sellerId: string, status: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/seller/${sellerId}`, { status :'warning'});
+  }
 }
