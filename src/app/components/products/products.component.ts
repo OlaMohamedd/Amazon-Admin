@@ -12,7 +12,7 @@ import { CategoryService } from 'src/services/category.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  category: Category = {} as Category;
+  categoryList: Category[] = [];
   productId?: string | null;
   productsObj = {} as any;
   productList: Product[] = [];
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   checkNumber = /^[0-9]{1,6}$/;
   checkString2 = /(?:[0-9a-z  ا-ي آ-ی]{5,},)+/i;
   checkObjStr = /^[a-zA-Z, 0-9]+:[a-zA-Z, 0-9]+$/i;
-  categoryIdReg = /^[0-9a-z]{10,}$/i;
+  // categoryIdReg = /^[0-9a-z]{10,}$/i;
   productForm!: FormGroup;
   product!: Product;
   constructor(
@@ -49,10 +49,6 @@ export class ProductsComponent implements OnInit {
       ]),
       aboutItem_ar: new FormControl('', [
         Validators.pattern(this.checkString2),
-      ]),
-      categoryId: new FormControl('', [
-        Validators.required,
-        Validators.pattern(this.categoryIdReg),
       ]),
     });
   }
@@ -87,6 +83,13 @@ export class ProductsComponent implements OnInit {
         });
       });
     });
+    this.categoryService.getAllCategory().subscribe((data)=>{
+      let catObj:any=data;
+      this.categoryList=catObj.data;
+      console.log('====================================');
+      console.log(this.categoryList);
+      console.log('====================================');
+    })
   }
   get title_en() {
     return this.productForm.get('title_en');
@@ -131,50 +134,47 @@ export class ProductsComponent implements OnInit {
     return this.productForm.get('aboutItem_ar');
   }
 
-  get categoryId() {
-    return this.productForm.get('categoryId');
+
+  //other id
+  categoryId:any='65133a2e6c55f99db5e4cdcb';
+   checkedCategory:string='other';
+   checkedCategoryAr:string='الباقون';
+   changeCategory(name_en:string,name_ar:string,id:any){
+    this.checkedCategory=name_en;
+    this.checkedCategoryAr=name_ar;
+    this.categoryId=id;
   }
   get quantity() {
     return this.productForm.get('quantity');
   }
-  getCategoryInProgress: boolean = false;
+  // getCategoryInProgress: boolean = false;
+  // getCategory() {
+  //   if (this.getCategoryInProgress) {
+  //     return;
+  //   }
 
-  getCategory() {
-    if (this.getCategoryInProgress) {
-      return;
-    }
-    let catData: any;
-    let allCategories = [] as any;
-    this.categoryService.getAllCategory().subscribe((data) => {
-      catData = data;
-      allCategories = catData.data;
-      let foundCategory = allCategories.find(
-        (category: { _id: any }) => category._id == this.categoryId?.value
-      );
-      if (foundCategory) {
-        try {
-          this.getCategoryInProgress = true;
-          this.categoryService
-            .getCategoryById(this.categoryId?.value)
-            .subscribe((data) => {
-              this.category = data.data;
+  //   this.getCategoryInProgress = true;
 
-              this.onSubmit();
-              this.getCategoryInProgress = false;
-            });
-        } catch (err) {
-          alert(`Error Fetching category ${err}`);
-          this.getCategoryInProgress = false;
-        }
-      } else {
-        alert('Enter a valid category id');
-        this.getCategoryInProgress = false;
-      }
-    });
-  }
+  //   let catData: any;
+  //   let allCategories = [] as any;
+  //   this.categoryService.getAllCategory().subscribe((data) => {
+  //     catData = data;
+  //     allCategories = catData.data;
+  //     let foundCategory = allCategories.find(
+  //       (category: { _id: any }) => category._id == this.categoryId?.value
+  //     );
+
+  //     if (!foundCategory) {
+  //       alert('No Category Found');
+  //     }
+
+  //     this.getCategoryInProgress = false;
+  //     this.onSubmit();
+  //   });
+  // }
 
   onSubmit() {
-    this.getCategory();
+
     if (!this.productId) {
       const infoInputEn = this.info_en?.value
         ? this.info_en?.value.split(',').filter(Boolean)
@@ -191,19 +191,16 @@ export class ProductsComponent implements OnInit {
       const infoInputAr = this.info_ar?.value
         ? this.info_ar?.value.split(',').filter(Boolean)
         : '';
-      // let notMatchedAr = infoInputAr
-      //   ? infoInputAr.find((item: string) => {
-      //       return !item.match(this.checkObjStr);
-      //     })
-      //   : false;
-      // if (notMatchedAr) {
-      //   alert('Enter a valid structure for info AR');
-      //   return;
-      // }
       let enAboutItem = this.aboutItem_en?.value.split(',').filter(Boolean);
       let arAboutItem = this.aboutItem_ar?.value.split(',').filter(Boolean);
 
       if (this.productForm.valid) {
+        let categoryValue =
+          {
+            _id: this.categoryId,
+            name_en: "this.category.name_en",
+            name_ar: "this.category.name_ar",
+          } || null;
         const product: Product = {
           quantity: this.quantity?.value,
           title_en: this.title_en?.value,
@@ -219,11 +216,7 @@ export class ProductsComponent implements OnInit {
           info_ar: infoInputAr,
           aboutItem_en: enAboutItem,
           aboutItem_ar: arAboutItem,
-          categoryId: {
-            _id: this.categoryId?.value,
-            name_en: this.category.name_en,
-            name_ar: this.category.name_ar,
-          },
+          categoryId: categoryValue,
         };
         this.productServices.addProducts(product).subscribe(() => {
           this.productServices.getAllProducts().subscribe((data) => {
@@ -243,7 +236,7 @@ export class ProductsComponent implements OnInit {
         this.info_ar?.setValue('');
         this.aboutItem_en?.setValue('');
         this.aboutItem_ar?.setValue('');
-        this.categoryId?.setValue('');
+        this.categoryId;
       } else {
         alert('Enter valid values');
       }
@@ -294,12 +287,13 @@ export class ProductsComponent implements OnInit {
         info_ar: infoInputAr,
         aboutItem_en: enAboutItemArr,
         aboutItem_ar: ArAboutItemArr,
-        categoryId: {
-          _id: this.categoryId?.value,
-          name_en: this.category.name_en,
-          name_ar: this.category.name_ar,
-        },
-      };
+        categoryId:
+          {
+            _id: this.categoryId,
+            name_en:"",
+            name_ar: "",
+      }
+    };
 
       this.productServices.updateProducts(product).subscribe(() => {
         this.productServices.getAllProducts().subscribe((data) => {
@@ -313,12 +307,16 @@ export class ProductsComponent implements OnInit {
   update(product: Product) {
     this.router.navigate(['products', product._id]);
   }
+
   delete(product: Product) {
+let confirmDelete=confirm('Do You really Want to delete this product ')
+   if(confirmDelete){
     this.productServices.deleteProducts(product).subscribe(() => {
       this.productList = this.productList.filter(
         (prod) => prod._id !== product._id
       );
     });
+   }
   }
   language: string = 'en';
   changLanguage() {
