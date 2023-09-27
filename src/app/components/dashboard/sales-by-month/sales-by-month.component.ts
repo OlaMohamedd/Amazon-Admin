@@ -6,7 +6,7 @@ import { Order } from 'src/app/models/order';
 @Component({
   selector: 'app-sales-by-month',
   templateUrl: './sales-by-month.component.html',
-  styleUrls: ['./sales-by-month.component.scss']
+  // styleUrls: ['./sales-by-month.component.scss']
 })
 export class SalesByMonthComponent implements OnInit {
 
