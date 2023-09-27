@@ -3,6 +3,8 @@ import { Category } from 'src/Models/category';
 import { CategoryService } from 'src/services/category.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from 'src/services/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category',
@@ -21,7 +23,8 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryServices: CategoryService,
     private activeRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private productService: ProductsService
   ) {
     this.categoryForm = new FormGroup({
       name_en: new FormControl('', [
@@ -43,9 +46,11 @@ export class CategoryComponent implements OnInit {
         .subscribe((data) => {
           this.category = data;
           this.category = this.category.data;
-          let catProductsId =(this.category.products)? this.category.products
-            .map((product: { _id: any }) => product._id)
-            .join(','):'';
+          let catProductsId = this.category.products
+            ? this.category.products
+                .map((product: { _id: any }) => product._id)
+                .join(',')
+            : '';
           this.categoryForm.patchValue({
             name_en: this.category.name_en || '',
             name_ar: this.category.name_ar || '',
@@ -69,11 +74,28 @@ export class CategoryComponent implements OnInit {
     return this.categoryForm.get('products');
   }
   delete(category: Category) {
-    this.categoryServices.deleteCategory(category).subscribe(() => {
-      this.categoryList = this.categoryList.filter(
-        (cat) => cat._id !== category._id
-      );
-    });
+    Swal.fire({
+      title: 'Do you want to delete This Category',
+      icon: 'question',
+      confirmButtonText: 'Delete Product',
+      cancelButtonText: 'Cancel',
+      showCancelButton: true,
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.categoryServices.deleteCategory(category).subscribe(() => {
+            this.categoryList = this.categoryList.filter(
+              (cat) => cat._id !== category._id,
+              Swal.fire({
+                title: 'Category deleted',
+                text: 'Category deleted',
+                icon: 'success',
+              })
+            );
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
   update(category: Category) {
     this.router.navigate(['category', category._id]);
@@ -127,8 +149,8 @@ export class CategoryComponent implements OnInit {
       }
     }
   }
-  language:string="en";
-  changLanguage(){
-   this.language=(this.language=="en")?"arabic":"en";
+  language: string = 'en';
+  changLanguage() {
+    this.language = this.language == 'en' ? 'arabic' : 'en';
   }
 }

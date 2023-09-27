@@ -13,7 +13,7 @@ export interface Product {
   info_ar?:Array<string>;
   aboutItem_en?:Array<string>;
   aboutItem_ar?:Array<string>;
-  categoryId:{
+  categoryId?:{
     _id:string|undefined,
     name_en:string,
     name_ar:string,
