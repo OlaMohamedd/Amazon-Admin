@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   productId?: string | null;
   productsObj = {} as any;
   productList: Product[] = [];
-  checkString = /^[a-z A-Z - () ا-ي آ-ی]{3}[ 0-9 a-z A-Z ا-ي آ-ی]{1,100}$/;
+  // checkString = /^[a-z A-Z - () ا-ي آ-ی]{3}[ 0-9 a-z A-Z ا-ي آ-ی]{1,}$/;
   checkNumber = /^[0-9]{1,6}$/;
   checkString2 = /(?:[0-9a-z  ا-ي آ-ی]{5,},)+/i;
   checkObjStr = /^[a-zA-Z, 0-9]+:[a-zA-Z, 0-9]+$/i;
@@ -35,11 +35,9 @@ export class ProductsComponent implements OnInit {
       quantity: new FormControl('', [Validators.pattern(this.checkNumber)]),
       title_en: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.checkString),
       ]),
       title_ar: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.checkString),
       ]),
       img: new FormControl('', [Validators.required]),
       oldPrice: new FormControl('', [Validators.pattern(this.checkNumber)]),
