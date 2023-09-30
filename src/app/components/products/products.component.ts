@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   // checkString = /^[a-z A-Z - () ا-ي آ-ی]{3}[ 0-9 a-z A-Z ا-ي آ-ی]{1,}$/;
   checkNumber = /^[0-9]{1,6}$/;
   checkString2 = /(?:[0-9a-z  ا-ي آ-ی]{5,},)+/i;
-  checkObjStr = /^[a-zA-Z, 0-9]+:[a-zA-Z, 0-9]+$/i;
+  checkObjStr = /^.+ : .+$/;
   // categoryIdReg = /^[0-9a-z]{10,}$/i;
   productForm!: FormGroup;
   product!: Product;
