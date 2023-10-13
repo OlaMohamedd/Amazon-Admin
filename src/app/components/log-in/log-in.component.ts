@@ -19,16 +19,18 @@ export class LogInComponent {
     this.signInForm = this.formBuilder.group({
 
       email: ['', [Validators.required , Validators.email]],
-      password: ['', Validators.required]
+      pwd: ['', Validators.required]
     });
   }
 
   signIn() {
     if (this.signInForm.valid) {
-      const { email, password } = this.signInForm.value;
-      this.loginAuthService.login(email, password).subscribe({
+      const { email, pwd } = this.signInForm.value;
+      console.log(email, pwd)
+      this.loginAuthService.login(email, pwd).subscribe({
         next: (success) => {
           if (success) {
+
             console.log('Sign-in successful');
             this.router.navigate(['/dashboard']);
           } else {

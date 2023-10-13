@@ -13,6 +13,7 @@ export class ControlSellerService {
   constructor(private http: HttpClient) { }
 
   getAllSellers(): Observable<any> {
+    
     return this.http.get<any>(`${this.baseUrl}/seller`);
   }
 

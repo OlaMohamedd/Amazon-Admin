@@ -18,11 +18,11 @@
           </div>
          
           
-        <div class="form-group" [ngClass]="{'has-error': signInForm.get('password')?.invalid && (signInForm.get('password')?.dirty || signInForm.get('password')?.touched)}">
-            <label for="password" class="form-label"><h5>Password</h5></label>
-            <input type="password" class="form-control" id="password" formControlName="password">
-            <div *ngIf="signInForm.get('password')?.invalid && (signInForm.get('password')?.dirty || signInForm.get('password')?.touched)">
-                <div *ngIf="signInForm.get('password')?.errors?.['required']" class="alarm">Enter your password</div>
+        <div class="form-group" [ngClass]="{'has-error': signInForm.get('pwd')?.invalid && (signInForm.get('pwd')?.dirty || signInForm.get('pwd')?.touched)}">
+            <label for="pwd" class="form-label"><h5>Password</h5></label>
+            <input type="password" class="form-control" id="pwd" formControlName="pwd">
+            <div *ngIf="signInForm.get('pwd')?.invalid && (signInForm.get('pwd')?.dirty || signInForm.get('pwd')?.touched)">
+                <div *ngIf="signInForm.get('pwd')?.errors?.['required']" class="alarm">Enter your pwd</div>
             </div>
         </div>
         <button type="submit" [disabled]="signInForm.invalid">Continue</button>

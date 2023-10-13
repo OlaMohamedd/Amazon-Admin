@@ -16,12 +16,17 @@ export class LoginAuthService {
   }
 
   
-  login(email: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.apiURL, { email, password }).pipe(
+  
+  login(email: string, pwd: string): Observable<boolean> {
+    const options = {
+      withCredentials:true
+  
+    }
+    return this.http.post<any>(this.apiURL, { email , pwd }, options).pipe(
       map(response => {
-        const { token } = response;
-        if (token) {
-          localStorage.setItem('token', token);
+        const { accessToken } = response;
+        if (accessToken) {
+          localStorage.setItem('accessToken', accessToken);
           this.currentAdmin = response.admin; 
           this.isLogBehavior.next(true);
           return true;
@@ -34,13 +39,16 @@ export class LoginAuthService {
   }
 
 
-  logout() {
-    localStorage.removeItem("token");
+  logout(): Observable<boolean>  {
+    
+   localStorage.removeItem("accessToken");
+   
+    return this.http.get<any>("http://localhost:3300/admin/logout")
     this.isLogBehavior.next(false);
   }
 
   isAdminLoggedIn(): boolean {
-    return localStorage.getItem('token') ? true : false;
+    return localStorage.getItem('accessToken') ? true : false;
   }
 
   getUserStatus(): Observable<boolean> {
