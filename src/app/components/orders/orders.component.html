@@ -19,7 +19,7 @@
         <td class="order-td ">{{items(order.products)}}</td>
         <td class="order-td">{{order.user.address}}</td>
         <td class="order-td" >
-          <span class="px-2 py-1 rounded" [ngClass]="{'text-white bg-success': order.status === 'completed','text-dark bg-warning': order.status === 'process'}">
+          <span class="px-2 py-1 rounded" [ngClass]="{'text-white bg-danger': order.status === 'cancelled','text-white bg-success': order.status === 'completed','text-dark bg-warning': order.status === 'process'}">
             {{order.status}}
             
           </span>
